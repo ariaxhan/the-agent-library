@@ -1,0 +1,18 @@
+{
+  "name": "ground-truth",
+  "owner": {
+    "name": "Aria Han",
+    "url": "https://github.com/ariaxhan"
+  },
+  "metadata": {
+    "description": "Skills for AI work that earns trust and compounds — distilled from real shipped systems.",
+    "version": "0.1.0"
+  },
+  "plugins": [
+    {
+      "name": "ground-truth",
+      "source": ".",
+      "description": "The full ground-truth skill library: durable agent memory, earned-confidence verification, mechanical enforcement, and operated creative/research/build pipelines. Install for everything, or copy a single skill's SKILL.md to take just what you need."
+    }
+  ]
+}

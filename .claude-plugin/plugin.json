@@ -1,0 +1,19 @@
+{
+  "name": "ground-truth",
+  "version": "0.1.0",
+  "description": "Skills for AI work that earns trust and compounds. Durable agent memory, earned-confidence verification, mechanical (hook-based) enforcement, and operated creative/research/build pipelines — distilled from real shipped systems.",
+  "author": {
+    "name": "Aria Han",
+    "url": "https://github.com/ariaxhan"
+  },
+  "license": "MIT",
+  "keywords": [
+    "claude-code",
+    "agent-skills",
+    "ai-agents",
+    "agent-memory",
+    "llm-eval",
+    "orchestration",
+    "prompt-engineering"
+  ]
+}

@@ -1,0 +1,226 @@
+#!/bin/bash
+# =============================================================================
+# Runaway-Agent Killswitch  --  Claude Code PreToolUse hook (reference impl)
+# =============================================================================
+# Register on:  PreToolUse, matcher "" (ALL tools).  NEVER on Stop.
+#   (A Stop hook exiting non-zero FORCES the agent to keep working -- the exact
+#    opposite of a killswitch. Blocking forward tool calls at PreToolUse is what
+#    makes a capped agent actually run out of tools and stop.)
+#
+# WHAT IT DOES
+#   Fires once per tool call -- the only enforcement point OUTSIDE the model loop.
+#   Caps a session by (a) tool-call COUNT and (b) wall-clock DURATION. Over cap it
+#   blocks new EXPENSIVE tools (exit 2) but ALLOWS a save-work allowlist (exit 0)
+#   so the agent can commit + write a handoff + stop without losing work.
+#
+# WHY NOT CAP ON COST
+#   No trustworthy cost signal exists inside a hook. Transcript token fields are
+#   broken placeholders (can report ~100x lower than real spend), so a dollar cap
+#   built on them would be off by two orders of magnitude. Tool-call count is the
+#   honest proxy. Pair this hook with a real max_budget_usd ceiling on the loop.
+#
+# FAIL-OPEN POLICY (the single most important property)
+#   This runs on EVERY tool call. A gate that fails CLOSED bricks all work the
+#   instant it hits a bug. So ANY internal error -> exit 0 (allow) + stderr note.
+#   The ONLY exit-2 path is a confirmed over-cap read of a successfully
+#   incremented counter against a non-allowlisted tool. Do not source shared libs:
+#   a safety gate must always run and never inherit a bug from common code.
+#
+# CONFIG (env var > default), sized so a long legit session does NOT false-trip:
+#   KILLSWITCH_MAX_TOOLS     hard cap, tool calls per session   (default 500)
+#   KILLSWITCH_WARN_PERCENT  soft-warn threshold, % of max      (default 80)
+#   KILLSWITCH_MAX_DURATION  wall-clock seconds, 0 = disabled   (default 7200 = 2h)
+#   KILLSWITCH_OFF=1         disable entirely (escape hatch)
+# =============================================================================
+
+# --- Defaults + sanity (any non-numeric config -> safe fallback) -------------
+MAX_TOOLS="${KILLSWITCH_MAX_TOOLS:-500}"
+WARN_PERCENT="${KILLSWITCH_WARN_PERCENT:-80}"
+MAX_DURATION="${KILLSWITCH_MAX_DURATION:-7200}"
+case "$MAX_TOOLS"    in ''|*[!0-9]*) MAX_TOOLS=500;;   esac
+case "$WARN_PERCENT" in ''|*[!0-9]*) WARN_PERCENT=80;; esac
+case "$MAX_DURATION" in ''|*[!0-9]*) MAX_DURATION=7200;; esac
+
+# --- Escape hatch 1: env disable (before any parsing) ------------------------
+if [ "${KILLSWITCH_OFF:-}" = "1" ]; then
+  echo "killswitch: BYPASSED (KILLSWITCH_OFF=1)." >&2
+  exit 0
+fi
+
+# jq needed to parse stdin; missing -> FAIL OPEN.
+if ! command -v jq >/dev/null 2>&1; then
+  echo "killswitch: jq not found, guard degraded -- allowing." >&2
+  exit 0
+fi
+
+INPUT=$(cat 2>/dev/null)
+[ -z "$INPUT" ] && exit 0                      # nothing on stdin -> allow
+
+# Parse the fields we need. Any parse failure -> empty -> fail open below.
+SESSION_ID=$(printf '%s' "$INPUT" | jq -r '.session_id // empty' 2>/dev/null)
+TOOL_NAME=$(printf '%s' "$INPUT" | jq -r '.tool_name // empty' 2>/dev/null)
+TOOL_COMMAND=$(printf '%s' "$INPUT" | jq -r '.tool_input.command // empty' 2>/dev/null)
+
+# No session_id -> can't key a counter safely -> FAIL OPEN.
+if [ -z "$SESSION_ID" ]; then
+  echo "killswitch: no session_id -- allowing." >&2
+  exit 0
+fi
+# Sanitize for use as a filename (UUIDs are already safe).
+SESSION_ID=$(printf '%s' "$SESSION_ID" | tr -cd 'A-Za-z0-9._-')
+[ -z "$SESSION_ID" ] && exit 0
+
+# --- State dir (project-agnostic): prefer the project dir, else a tmp dir -----
+#     SessionStart init script MUST derive this identically.
+if [ -n "${CLAUDE_PROJECT_DIR:-}" ]; then
+  STATE_DIR="${CLAUDE_PROJECT_DIR}/.claude/.killswitch"
+else
+  STATE_DIR="${TMPDIR:-/tmp}/claude-killswitch"
+fi
+mkdir -p "$STATE_DIR" 2>/dev/null || true
+if [ ! -d "$STATE_DIR" ] || [ ! -w "$STATE_DIR" ]; then
+  echo "killswitch: state dir not writable ($STATE_DIR) -- allowing." >&2
+  exit 0                                       # unusable state -> FAIL OPEN
+fi
+
+COUNT_FILE="$STATE_DIR/$SESSION_ID.count"
+START_FILE="$STATE_DIR/$SESSION_ID.start"
+WARN_FILE="$STATE_DIR/$SESSION_ID.warned"
+LOCK_DIR="$STATE_DIR/$SESSION_ID.lockd"
+OVERRIDE_FILE="$STATE_DIR/.budget-override"
+
+# --- Escape hatch 2: override file present -----------------------------------
+if [ -f "$OVERRIDE_FILE" ]; then
+  echo "killswitch: BYPASSED (override file present)." >&2
+  exit 0
+fi
+
+# --- Atomic increment via mkdir spinlock -------------------------------------
+#   flock is missing on macOS, but `mkdir` is atomic on POSIX: only one process
+#   can create the lock dir. Spin briefly; if we can't get the lock fast, FAIL
+#   OPEN (never block a tool call waiting on a lock).
+COUNT=""
+_acquired=0
+_i=0
+while [ "$_i" -lt 50 ]; do                     # ~50 * 5ms = 250ms max wait
+  if mkdir "$LOCK_DIR" 2>/dev/null; then _acquired=1; break; fi
+  # Steal a stale lock dir left by a crashed process (>~30s old).
+  if [ -d "$LOCK_DIR" ]; then
+    _stale=$(find "$LOCK_DIR" -maxdepth 0 -mmin +0.5 2>/dev/null)
+    [ -n "$_stale" ] && rmdir "$LOCK_DIR" 2>/dev/null
+  fi
+  _i=$((_i + 1))
+  sleep 0.005 2>/dev/null || sleep 1
+done
+
+if [ "$_acquired" = 1 ]; then
+  C=$(cat "$COUNT_FILE" 2>/dev/null)
+  case "$C" in ''|*[!0-9]*) C=0;; esac         # corrupt/empty counter -> 0
+  C=$((C + 1))
+  echo "$C" > "$COUNT_FILE" 2>/dev/null && COUNT="$C"
+  # Record session start epoch on first sight (for the wall-clock cap).
+  [ -f "$START_FILE" ] || date +%s > "$START_FILE" 2>/dev/null || true
+  rmdir "$LOCK_DIR" 2>/dev/null || true
+fi
+
+# Could not acquire the lock or write the counter -> FAIL OPEN.
+if [ -z "$COUNT" ]; then
+  echo "killswitch: could not update counter -- allowing." >&2
+  exit 0
+fi
+
+# --- Wall-clock duration ------------------------------------------------------
+DURATION=0
+if [ "$MAX_DURATION" -gt 0 ] && [ -f "$START_FILE" ]; then
+  START_EPOCH=$(cat "$START_FILE" 2>/dev/null)
+  case "$START_EPOCH" in ''|*[!0-9]*) START_EPOCH="";; esac
+  if [ -n "$START_EPOCH" ]; then
+    NOW=$(date +%s 2>/dev/null)
+    case "$NOW" in ''|*[!0-9]*) NOW="";; esac
+    [ -n "$NOW" ] && DURATION=$((NOW - START_EPOCH))
+  fi
+fi
+OVER_DURATION=0
+[ "$MAX_DURATION" -gt 0 ] && [ "$DURATION" -ge "$MAX_DURATION" ] && OVER_DURATION=1
+
+# Warn threshold (count).
+WARN_AT=$(( MAX_TOOLS * WARN_PERCENT / 100 ))
+[ "$WARN_AT" -lt 1 ] && WARN_AT=1
+
+# --- Save-work allowlist (permitted even when over-cap) ----------------------
+#   Read/Write/Edit/todo always allowed. Bash allowed ONLY for explicit
+#   save/report commands. Match is prefix-anchored so `git clone`/`git config`
+#   do NOT sneak through the `git commit` allowance. Adapt the tool/CLI names
+#   below to your own stack (e.g. your memory-CLI in place of `mem-save`).
+is_allowlisted() {
+  case "$TOOL_NAME" in
+    Read|Write|Edit|TodoWrite) return 0;;
+    Bash)
+      local cmd
+      # Strip leading env-var assignments so "FOO=1 git commit" still matches.
+      cmd=$(printf '%s' "$TOOL_COMMAND" | sed -E 's/^([[:space:]]*[A-Za-z_][A-Za-z0-9_]*=[^[:space:]]*[[:space:]]+)*//')
+      case "$cmd" in
+        "git commit"*|"git add"*|"git push"*|"git status"*|"git diff"*|"git log"*) return 0;;
+        mem-save*|"echo "*|echo|"cat "*|cat) return 0;;
+        *) return 1;;
+      esac
+      ;;
+    *) return 1;;
+  esac
+}
+
+# --- DECISION ----------------------------------------------------------------
+if [ "$COUNT" -ge "$MAX_TOOLS" ] || [ "$OVER_DURATION" = 1 ]; then
+  if [ "$OVER_DURATION" = 1 ]; then
+    REASON="wall-clock ${DURATION}s >= ${MAX_DURATION}s"
+  else
+    REASON="tool calls ${COUNT}/${MAX_TOOLS}"
+  fi
+  if is_allowlisted; then
+    echo "killswitch: OVER BUDGET ($REASON) but allowing save-work tool ($TOOL_NAME). Checkpoint now + end the session." >&2
+    exit 0                                     # let the agent save + stop
+  fi
+  echo "KILLSWITCH: session budget exceeded ($REASON)." >&2
+  echo "STOP making new expensive calls ($TOOL_NAME is blocked). Save your work and END:" >&2
+  echo "  - commit (git add / git commit / git push), write a handoff (Write/Edit), record state." >&2
+  echo "  - Read/Write/Edit/TodoWrite + git/save commands are still allowed." >&2
+  echo "  - Override only if intentional: touch \"$OVERRIDE_FILE\"  or  KILLSWITCH_OFF=1." >&2
+  exit 2                                       # the ONLY block path
+fi
+
+# --- Soft warn (once per crossing) -------------------------------------------
+if [ "$COUNT" -ge "$WARN_AT" ] && [ ! -f "$WARN_FILE" ]; then
+  echo "killswitch: $COUNT/$MAX_TOOLS tool calls this session -- wrap up + checkpoint soon (hard stop at $MAX_TOOLS)." >&2
+  touch "$WARN_FILE" 2>/dev/null || true
+fi
+
+# Under cap -> allow silently.
+exit 0
+
+# =============================================================================
+# COMPANION: killswitch-init.sh  (register on SessionStart, matcher "")
+# -----------------------------------------------------------------------------
+# Must derive STATE_DIR IDENTICALLY to this script. On every session start it:
+#   1. Sweeps state files older than ~24h (count/start/warned) + stale lock dirs
+#      -- so a reused-on-disk id can NEVER carry an old over-cap counter.
+#   2. Initializes THIS session's counter to 0 and stamps .start -- UNLESS
+#      source == "resume" (a resumed session continues; budget must not reset).
+# Fully fail-open: a crash here must never block the session. Sketch:
+#
+#   INPUT=$(cat 2>/dev/null)
+#   if [ -n "${CLAUDE_PROJECT_DIR:-}" ]; then STATE_DIR="${CLAUDE_PROJECT_DIR}/.claude/.killswitch"
+#   else STATE_DIR="${TMPDIR:-/tmp}/claude-killswitch"; fi
+#   mkdir -p "$STATE_DIR" 2>/dev/null || true; [ -d "$STATE_DIR" ] || exit 0
+#   find "$STATE_DIR" -maxdepth 1 -type f \( -name '*.count' -o -name '*.start' -o -name '*.warned' \) -mtime +1 -delete 2>/dev/null || true
+#   find "$STATE_DIR" -maxdepth 1 -type d -name '*.lockd' -mtime +1 -exec rmdir {} \; 2>/dev/null || true
+#   if command -v jq >/dev/null 2>&1 && [ -n "$INPUT" ]; then
+#     SID=$(printf '%s' "$INPUT" | jq -r '.session_id // empty' | tr -cd 'A-Za-z0-9._-')
+#     SRC=$(printf '%s' "$INPUT" | jq -r '.source // empty')
+#     if [ -n "$SID" ] && [ "$SRC" != "resume" ]; then
+#       echo "0" > "$STATE_DIR/$SID.count" 2>/dev/null || true
+#       date +%s > "$STATE_DIR/$SID.start" 2>/dev/null || true
+#       rm -f "$STATE_DIR/$SID.warned" 2>/dev/null || true
+#     fi
+#   fi
+#   exit 0
+# =============================================================================

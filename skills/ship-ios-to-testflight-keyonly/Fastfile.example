@@ -1,0 +1,185 @@
+default_platform(:ios)
+
+# ═══════════════════════════════════════════════════════════════════════════════
+# Key-only TestFlight pipeline. ONE credential: an App Store Connect API key (.p8).
+# No interactive Apple ID login, no portal clicking, nothing to restore on a fresh
+# machine — the key mints the distribution cert/profile on demand.
+#
+# Replace the placeholders below. Keep the .p8 GITIGNORED, never in the tree.
+# Capacitor: run web build + `npx cap sync ios` BEFORE these lanes.
+# Expo: run `expo prebuild` BEFORE these lanes.
+# ═══════════════════════════════════════════════════════════════════════════════
+APPLE_TEAM_ID = "YOUR_TEAM_ID"              # Apple Developer team id, e.g. "ABCDE12345"
+BUNDLE_ID     = "com.example.app"
+APP_NAME      = "Your App"
+
+# App Store Connect API key (App Manager / Admin role). Gitignored.
+ASC_KEY_ID    = "YOUR_KEY_ID"               # e.g. "AB12CD34EF"
+ASC_ISSUER_ID = "YOUR_ISSUER_ID"           # the UUID from App Store Connect > Keys
+ASC_KEY_PATH  = "keys/AuthKey_XXXX.p8"      # relative to repo root (Fastfile is in ./fastlane)
+
+platform :ios do
+  # ── First run only: create the App Store Connect app record, non-interactively. ──
+  desc "Create the App Store Connect app record (first run only)"
+  lane :register do
+    # The key call MUST run first: produce() has no api_key option — it reads the token
+    # from the lane context (Spaceship::ConnectAPI) that this call sets.
+    app_store_connect_api_key(key_id: ASC_KEY_ID, issuer_id: ASC_ISSUER_ID, key_filepath: ASC_KEY_PATH)
+    # skip_devcenter: true → only create the App Store Connect record (token auth). The
+    # Developer-Portal half uses legacy Apple-ID web login the key can't satisfy; we don't
+    # need it — xcodebuild -allowProvisioningUpdates auto-creates the App ID during :beta.
+    produce(
+      app_identifier: BUNDLE_ID,
+      app_name: APP_NAME,
+      team_id: APPLE_TEAM_ID,
+      skip_devcenter: true,
+    )
+  end
+
+  # ── Build (Release) + upload to TestFlight. ──
+  desc "Build and upload to TestFlight"
+  lane :beta do
+    api_key = app_store_connect_api_key(
+      key_id: ASC_KEY_ID, issuer_id: ASC_ISSUER_ID, key_filepath: ASC_KEY_PATH,
+    )
+    # build_app has NO api_key param — xcodebuild authenticates for automatic provisioning
+    # via -authenticationKey* flags. The key path MUST be absolute or auth silently fails.
+    auth_key_path = File.expand_path("../#{ASC_KEY_PATH}", __dir__)
+
+    build_app(
+      workspace: "ios/App.xcworkspace",   # or use `project:` for a bare .xcodeproj
+      scheme: "App",
+      configuration: "Release",
+      export_method: "app-store",
+      export_options: { signingStyle: "automatic", teamID: APPLE_TEAM_ID },
+      # DEVELOPMENT_TEAM + CODE_SIGN_STYLE go via xcargs because Expo/Capacitor regenerate
+      # the project and wipe these settings. -allowProvisioningUpdates lets the key mint
+      # the cert/profile + auto-create the portal App ID.
+      xcargs: "DEVELOPMENT_TEAM=#{APPLE_TEAM_ID} CODE_SIGN_STYLE=Automatic " \
+              "-allowProvisioningUpdates " \
+              "-authenticationKeyID #{ASC_KEY_ID} " \
+              "-authenticationKeyIssuerID #{ASC_ISSUER_ID} " \
+              "-authenticationKeyPath #{auth_key_path}",
+      output_directory: "build",
+      output_name: "App.ipa",
+      clean: true,
+    )
+
+    upload_to_testflight(
+      api_key: api_key,
+      app_identifier: BUNDLE_ID,
+      skip_waiting_for_build_processing: true,
+    )
+  end
+
+  # ── Store listing metadata only (no binary, no screenshots). ──
+  desc "Push App Store metadata via deliver (no binary)"
+  lane :metadata do
+    api_key = app_store_connect_api_key(
+      key_id: ASC_KEY_ID, issuer_id: ASC_ISSUER_ID, key_filepath: ASC_KEY_PATH,
+    )
+    upload_to_app_store(
+      api_key: api_key,
+      app_identifier: BUNDLE_ID,
+      platform: "ios",
+      skip_binary_upload: true,
+      skip_screenshots: true,
+      skip_metadata: false,
+      force: true,                          # suppress the interactive HTML preview
+      run_precheck_before_submit: false,
+      submit_for_review: false,
+    )
+  end
+
+  # ── iOS screenshots only. Files live in fastlane/screenshots/. ──
+  desc "Upload App Store screenshots via deliver"
+  lane :screenshots do
+    api_key = app_store_connect_api_key(
+      key_id: ASC_KEY_ID, issuer_id: ASC_ISSUER_ID, key_filepath: ASC_KEY_PATH,
+    )
+    upload_to_app_store(
+      api_key: api_key,
+      app_identifier: BUNDLE_ID,
+      platform: "ios",
+      skip_binary_upload: true,
+      skip_metadata: true,
+      skip_screenshots: false,
+      overwrite_screenshots: true,
+      force: true,
+      run_precheck_before_submit: false,
+      submit_for_review: false,
+    )
+  end
+
+  # ── macOS Catalyst build + upload. Same key, same bundle id (Universal Purchase). ──
+  # Requires SUPPORTS_MACCATALYST=YES and DERIVE_MACCATALYST_PRODUCT_BUNDLE_IDENTIFIER=NO
+  # in the target so iOS and Mac share the same ASC record.
+  desc "Build the Mac Catalyst variant and upload to TestFlight"
+  lane :mac do
+    api_key = app_store_connect_api_key(
+      key_id: ASC_KEY_ID, issuer_id: ASC_ISSUER_ID, key_filepath: ASC_KEY_PATH,
+    )
+    auth_key_path = File.expand_path("../#{ASC_KEY_PATH}", __dir__)
+
+    build_app(
+      workspace: "ios/App.xcworkspace",
+      scheme: "App",
+      configuration: "Release",
+      catalyst_platform: "macos",           # build the Mac Catalyst variant, not iOS
+      export_method: "app-store",
+      export_options: { signingStyle: "automatic", teamID: APPLE_TEAM_ID },
+      xcargs: "DEVELOPMENT_TEAM=#{APPLE_TEAM_ID} CODE_SIGN_STYLE=Automatic " \
+              "-allowProvisioningUpdates " \
+              "-authenticationKeyID #{ASC_KEY_ID} " \
+              "-authenticationKeyIssuerID #{ASC_ISSUER_ID} " \
+              "-authenticationKeyPath #{auth_key_path}",
+      output_directory: "build",
+      output_name: "App-mac",
+      clean: true,
+    )
+
+    upload_to_testflight(
+      api_key: api_key,
+      app_identifier: BUNDLE_ID,
+      app_platform: "osx",                  # route the Catalyst build to the Mac track
+      skip_waiting_for_build_processing: true,
+    )
+  end
+
+  # ── macOS screenshots. Catalyst screenshots are 2880x1800; deliver maps that size to
+  #    the APP_DESKTOP display type automatically. ──
+  desc "Upload Mac App Store screenshots via deliver (platform osx)"
+  lane :mac_screenshots do
+    api_key = app_store_connect_api_key(
+      key_id: ASC_KEY_ID, issuer_id: ASC_ISSUER_ID, key_filepath: ASC_KEY_PATH,
+    )
+    upload_to_app_store(
+      api_key: api_key,
+      app_identifier: BUNDLE_ID,
+      platform: "osx",
+      screenshots_path: "./fastlane/screenshots-mac",
+      skip_binary_upload: true,
+      skip_metadata: true,
+      skip_screenshots: false,
+      overwrite_screenshots: true,
+      force: true,
+      run_precheck_before_submit: false,
+      submit_for_review: false,
+    )
+  end
+
+  # ── One-time, key-only: mint the Mac Installer Distribution cert a Catalyst .pkg needs.
+  #    The ASC API can create certs (POST /v1/certificates), so no portal click. Idempotent.
+  desc "Mint the Mac Installer Distribution cert key-only (one-time)"
+  lane :mac_cert do
+    api_key = app_store_connect_api_key(
+      key_id: ASC_KEY_ID, issuer_id: ASC_ISSUER_ID, key_filepath: ASC_KEY_PATH,
+    )
+    cert(
+      platform: "macos",
+      type: "mac_installer_distribution",
+      team_id: APPLE_TEAM_ID,
+      api_key: api_key,
+    )
+  end
+end
