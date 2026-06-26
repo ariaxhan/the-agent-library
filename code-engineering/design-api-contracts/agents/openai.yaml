@@ -1,0 +1,7 @@
+interface:
+  display_name: "Design API Contracts"
+  short_description: "Shape reliable API behavior"
+  default_prompt: "Use $design-api-contracts to design or review this API contract."
+
+policy:
+  allow_implicit_invocation: true

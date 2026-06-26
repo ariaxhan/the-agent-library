@@ -1,0 +1,7 @@
+interface:
+  display_name: "Humanize AI Prose"
+  short_description: "Turn AI drafts into human writing"
+  default_prompt: "Use $humanize-ai-prose to revise this AI-shaped draft into specific, human prose."
+
+policy:
+  allow_implicit_invocation: true

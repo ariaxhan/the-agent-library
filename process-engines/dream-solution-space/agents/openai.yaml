@@ -1,0 +1,7 @@
+interface:
+  display_name: "Dream Solution Space"
+  short_description: "Diverge, attack, and choose"
+  default_prompt: "Use $dream-solution-space to generate and stress-test competing approaches before we commit."
+
+policy:
+  allow_implicit_invocation: true

@@ -1,7 +1,7 @@
 {
-  "name": "ground-truth",
+  "name": "portable-claude-skills",
   "version": "0.1.0",
-  "description": "Skills for AI work that earns trust and compounds. Durable agent memory, earned-confidence verification, mechanical (hook-based) enforcement, and operated creative/research/build pipelines — distilled from real shipped systems.",
+  "description": "A category-first library of portable Claude skills for planning, research, writing, work management, creative systems, and code engineering.",
   "author": {
     "name": "Aria Han",
     "url": "https://github.com/ariaxhan"
@@ -12,8 +12,11 @@
     "agent-skills",
     "ai-agents",
     "agent-memory",
-    "llm-eval",
-    "orchestration",
-    "prompt-engineering"
+    "planning",
+    "research",
+    "workflow",
+    "coding",
+    "writing",
+    "taste"
   ]
 }

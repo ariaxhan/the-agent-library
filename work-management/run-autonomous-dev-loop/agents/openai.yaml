@@ -1,0 +1,7 @@
+interface:
+  display_name: "Run Autonomous Dev Loop"
+  short_description: "Iterate until checks pass"
+  default_prompt: "Use $run-autonomous-dev-loop to implement this spec until acceptance checks pass or escalation is needed."
+
+policy:
+  allow_implicit_invocation: true

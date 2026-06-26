@@ -1,0 +1,7 @@
+interface:
+  display_name: "Research Failures First"
+  short_description: "Map failure modes before building"
+  default_prompt: "Use $research-failures-first to research known failure modes before implementation."
+
+policy:
+  allow_implicit_invocation: true

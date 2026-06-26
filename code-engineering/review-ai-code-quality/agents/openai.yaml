@@ -1,0 +1,7 @@
+interface:
+  display_name: "Review AI Code Quality"
+  short_description: "Catch common AI code defects"
+  default_prompt: "Use $review-ai-code-quality to review this change for validation, edge cases, errors, duplication, and complexity."
+
+policy:
+  allow_implicit_invocation: true

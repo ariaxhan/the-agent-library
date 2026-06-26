@@ -1,0 +1,7 @@
+interface:
+  display_name: "Critique Vision Handoff"
+  short_description: "Stress-test implementation briefs"
+  default_prompt: "Use $critique-vision-handoff to find blockers and gaps in this handoff."
+
+policy:
+  allow_implicit_invocation: true

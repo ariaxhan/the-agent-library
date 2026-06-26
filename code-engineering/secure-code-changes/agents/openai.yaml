@@ -1,0 +1,7 @@
+interface:
+  display_name: "Secure Code Changes"
+  short_description: "Review sensitive code paths"
+  default_prompt: "Use $secure-code-changes to review this auth/secrets/input-handling change."
+
+policy:
+  allow_implicit_invocation: true

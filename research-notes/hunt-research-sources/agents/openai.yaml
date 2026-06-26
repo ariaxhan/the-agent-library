@@ -1,0 +1,7 @@
+interface:
+  display_name: "Hunt Research Sources"
+  short_description: "Find and rank useful sources"
+  default_prompt: "Use $hunt-research-sources to run a broad source hunt on this topic."
+
+policy:
+  allow_implicit_invocation: true

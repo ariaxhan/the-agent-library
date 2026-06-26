@@ -1,18 +1,18 @@
 {
-  "name": "ground-truth",
+  "name": "portable-claude-skills",
   "owner": {
     "name": "Aria Han",
     "url": "https://github.com/ariaxhan"
   },
   "metadata": {
-    "description": "Skills for AI work that earns trust and compounds — distilled from real shipped systems.",
+    "description": "A category-first library of portable Claude skills for planning, research, writing, work management, creative systems, and code engineering.",
     "version": "0.1.0"
   },
   "plugins": [
     {
-      "name": "ground-truth",
+      "name": "portable-claude-skills",
       "source": ".",
-      "description": "The full ground-truth skill library: durable agent memory, earned-confidence verification, mechanical enforcement, and operated creative/research/build pipelines. Install for everything, or copy a single skill's SKILL.md to take just what you need."
+      "description": "The portable-claude-skills library: categorized portable skills for general Claude usage, plus code-engineering skills generalized from kernel-claude."
     }
   ]
 }

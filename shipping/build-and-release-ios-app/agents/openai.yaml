@@ -1,0 +1,7 @@
+interface:
+  display_name: "Build and Release iOS App"
+  short_description: "Draft iOS release workflow"
+  default_prompt: "Use $build-and-release-ios-app to prepare an iOS app for TestFlight and release."
+
+policy:
+  allow_implicit_invocation: false

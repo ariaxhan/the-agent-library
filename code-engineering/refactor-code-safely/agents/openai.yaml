@@ -1,0 +1,7 @@
+interface:
+  display_name: "Refactor Code Safely"
+  short_description: "Preserve behavior while cleaning code"
+  default_prompt: "Use $refactor-code-safely to simplify this code without changing behavior."
+
+policy:
+  allow_implicit_invocation: true

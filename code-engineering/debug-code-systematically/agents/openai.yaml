@@ -1,0 +1,7 @@
+interface:
+  display_name: "Debug Code Systematically"
+  short_description: "Find root causes, not guesses"
+  default_prompt: "Use $debug-code-systematically to reproduce and fix this bug from root cause."
+
+policy:
+  allow_implicit_invocation: true

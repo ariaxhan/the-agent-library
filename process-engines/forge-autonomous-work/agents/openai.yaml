@@ -1,0 +1,7 @@
+interface:
+  display_name: "Forge Autonomous Work"
+  short_description: "Iterate work until it survives"
+  default_prompt: "Use $forge-autonomous-work to take this task end to end with competing approaches, stress tests, and a final verdict."
+
+policy:
+  allow_implicit_invocation: true

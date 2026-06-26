@@ -1,0 +1,7 @@
+interface:
+  display_name: "Extract Source To Notes"
+  short_description: "Distill one source into notes"
+  default_prompt: "Use $extract-source-to-notes to process this source into structured notes."
+
+policy:
+  allow_implicit_invocation: true

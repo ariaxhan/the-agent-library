@@ -1,0 +1,7 @@
+interface:
+  display_name: "Write Session Chronicle"
+  short_description: "Record what actually happened"
+  default_prompt: "Use $write-session-chronicle to record what changed, failed, and remains."
+
+policy:
+  allow_implicit_invocation: true

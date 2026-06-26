@@ -1,0 +1,7 @@
+interface:
+  display_name: "Harden Rules Into Hooks"
+  short_description: "Turn process rules into checks"
+  default_prompt: "Use $harden-rules-into-hooks to decide which rules should become enforceable hooks."
+
+policy:
+  allow_implicit_invocation: true

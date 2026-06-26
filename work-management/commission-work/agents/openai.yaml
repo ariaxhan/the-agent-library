@@ -1,0 +1,7 @@
+interface:
+  display_name: "Commission Work"
+  short_description: "Scope substantial work clearly"
+  default_prompt: "Use $commission-work to shape this task into a commission before execution."
+
+policy:
+  allow_implicit_invocation: true

@@ -1,0 +1,7 @@
+interface:
+  display_name: "Orchestrate Coding Agents"
+  short_description: "Split coding work safely"
+  default_prompt: "Use $orchestrate-coding-agents to divide this coding task into safe agent contracts."
+
+policy:
+  allow_implicit_invocation: true

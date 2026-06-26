@@ -1,0 +1,7 @@
+interface:
+  display_name: "Train a Taste Model"
+  short_description: "Train a personal preference ranker"
+  default_prompt: "Use $train-a-taste-model to design a small taste model from my archive and curation signals."
+
+policy:
+  allow_implicit_invocation: true

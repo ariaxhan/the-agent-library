@@ -1,0 +1,7 @@
+interface:
+  display_name: "Agent Tradition"
+  short_description: "Install durable agent memory"
+  default_prompt: "Use $agent-tradition to set up durable project memory and session accountability."
+
+policy:
+  allow_implicit_invocation: true

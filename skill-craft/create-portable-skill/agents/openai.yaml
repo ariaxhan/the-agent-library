@@ -1,0 +1,7 @@
+interface:
+  display_name: "Create Portable Skill"
+  short_description: "Package real reusable skills"
+  default_prompt: "Use $create-portable-skill to turn this workflow into a portable skill."
+
+policy:
+  allow_implicit_invocation: true
