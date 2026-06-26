@@ -1,0 +1,7 @@
+interface:
+  display_name: "Brainstorm with Entropy"
+  short_description: "Novel ideas ranked by surprise"
+  default_prompt: "Use $brainstorm-with-entropy to generate novel ideas with named entropy techniques, ranked by surprise."
+
+policy:
+  allow_implicit_invocation: true

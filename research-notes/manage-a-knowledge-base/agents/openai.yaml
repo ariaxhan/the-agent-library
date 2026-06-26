@@ -1,0 +1,7 @@
+interface:
+  display_name: "Manage a Knowledge Base"
+  short_description: "Run a notes vault as a system"
+  default_prompt: "Use $manage-a-knowledge-base to triage, connect, synthesize, curate, decay, or audit a notes collection."
+
+policy:
+  allow_implicit_invocation: true

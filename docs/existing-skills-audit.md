@@ -27,9 +27,9 @@ These are the point of the repo: standalone process engines, generalized from ke
 | `/kernel:dream` | [`dream-solution-space`](../process-engines/dream-solution-space) | Process engines | Competing perspectives, council critique, integrity scores, recommendation | Removed codebase-only assumptions; kept grounded divergence + stress test. |
 | `/kernel:experiment` | [`experiment-on-rules`](../process-engines/experiment-on-rules) | Process engines | Hypotheses, experiment designs, evidence, confidence updates, rule recommendations | Removed AgentDB requirement; kept rule-as-hypothesis engine. |
 
-## Kernel-Claude Code Extraction
+## Code Engineering (standalone)
 
-Code skills are one category, not the whole repo. The source of truth for code methodology is `CodingVault/kernel-claude/skills/`; exports must be generalized for any Claude user.
+Code skills are one category, not the whole repo. Each is **standalone** — it works copied on its own, with no dependency on a parent system, local AgentDB, hooks, or sibling skills. (Originally derived from `kernel-claude` methodology, then de-coupled.)
 
 | Source skill | Packaged skill | Category | Output | Generalization |
 |---|---|---|---|---|
@@ -45,7 +45,7 @@ Code skills are one category, not the whole repo. The source of truth for code m
 | Skill | Category | Call |
 |---|---|---|
 | [`humanize-ai-prose`](../creative-taste/humanize-ai-prose) | Creative & taste systems | Keep. Ordered editing workflow with companion checklist. |
-| [`train-a-taste-model`](../creative-taste/train-a-taste-model) | Creative & taste systems | Keep. Real modeling workflow. |
+| `train-a-taste-model` | — | **Deleted** in the non-coder pass. Too niche/ML-specific for a general audience. |
 
 ## Still Draft
 
@@ -61,8 +61,26 @@ Code skills are one category, not the whole repo. The source of truth for code m
 | [`research-failures-first`](../operating-patterns/research-failures-first) | Operating patterns | Methodology-shaped skill for implementation research. |
 | [`harden-rules-into-hooks`](../operating-patterns/harden-rules-into-hooks) | Operating patterns | Enforcement-pattern skill. |
 
+## Non-Coder Pass (2026-06-26)
+
+Reframed the whole library for a general (non-coder) audience. Deleted `train-a-taste-model`. Kept the six code skills but reframed them as standalone (not a kernel-derived system). Mined the broader body of work — tradition, kernel commands, CollabVault, chronicles, experiments — for proven, generalizable *process* patterns, then built the first wave.
+
+Built this pass:
+
+| Skill | Category | Source / evidence |
+|---|---|---|
+| `reality-audit` | Verify & review | Fable reality-audit + phronesis "verified live" (the #1 most-repeated lesson) |
+| `test-the-measuring-stick` | Verify & review | cheap-floor / dummy-answer canon precedents (a content-free echo beat 8 models) |
+| `audit-the-premise` | Verify & review | phronesis P1/P3 + investigation-first reference |
+| `fresh-eyes-adversary-pass` | Verify & review | our4cuts/atlas/Fable adversary passes |
+| `brainstorm-with-entropy` | Process engines | `vaults-brainstorm-entropy` (8 entropy techniques) |
+| `synthesize-learnings` | Work management | `/kernel:retrospective` + phronesis-extract promotion gate |
+| `manage-a-knowledge-base` | Research & notes | CollabVault PKM family (triage/collide/weave/curate/forgetting-curve/lint) as one 6-phase kit |
+
+Rules folded into skills (not shipped as standalone skills or a separate pack): verify-live → `reality-audit`; reliability≠value and cheap-floor → `test-the-measuring-stick`; investigate-before-mutating / restore-in-place → `audit-the-premise`; root-cause-the-class → `fresh-eyes-adversary-pass`; recurrence-not-excitement → `synthesize-learnings` + the kit.
+
 ## Next Packaging Work
 
-1. Expand [`build-and-release-ios-app`](../shipping/build-and-release-ios-app).
-2. Audit `secure-keys` for a publishable credential-audit skill.
-3. Continue extracting `kernel-claude` skills into `code-engineering/` only when they are truly portable.
+1. Build the mapped second wave (see CATALOG "Mapped, Not Yet Built").
+2. Expand [`build-and-release-ios-app`](../shipping/build-and-release-ios-app).
+3. Audit `secure-keys` for a publishable credential-audit skill.

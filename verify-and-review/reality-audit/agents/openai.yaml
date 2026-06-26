@@ -1,0 +1,7 @@
+interface:
+  display_name: "Reality Audit"
+  short_description: "Grade a done report vs reality"
+  default_prompt: "Use $reality-audit to check what's actually true in this 'done' report versus what's only self-reported."
+
+policy:
+  allow_implicit_invocation: true

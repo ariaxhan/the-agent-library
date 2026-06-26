@@ -1,0 +1,7 @@
+interface:
+  display_name: "Test the Measuring Stick"
+  short_description: "Check if a score has teeth"
+  default_prompt: "Use $test-the-measuring-stick to see whether this score or grader actually distinguishes good work from garbage."
+
+policy:
+  allow_implicit_invocation: true

@@ -1,0 +1,7 @@
+interface:
+  display_name: "Synthesize Learnings"
+  short_description: "Distill many sessions of notes"
+  default_prompt: "Use $synthesize-learnings to consolidate accumulated notes across sessions and promote the patterns that recurred."
+
+policy:
+  allow_implicit_invocation: true

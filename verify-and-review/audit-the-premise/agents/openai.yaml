@@ -1,0 +1,7 @@
+interface:
+  display_name: "Audit the Premise"
+  short_description: "Check the assumption before acting"
+  default_prompt: "Use $audit-the-premise to test whether this task's underlying assumption is actually true before we spend effort on it."
+
+policy:
+  allow_implicit_invocation: true
