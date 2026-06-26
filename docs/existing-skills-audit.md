@@ -69,13 +69,13 @@ Built this pass:
 
 | Skill | Category | Source / evidence |
 |---|---|---|
-| `reality-audit` | Verify & review | Fable reality-audit + phronesis "verified live" (the #1 most-repeated lesson) |
-| `test-the-measuring-stick` | Verify & review | cheap-floor / dummy-answer canon precedents (a content-free echo beat 8 models) |
-| `audit-the-premise` | Verify & review | phronesis P1/P3 + investigation-first reference |
-| `fresh-eyes-adversary-pass` | Verify & review | our4cuts/atlas/Fable adversary passes |
-| `brainstorm-with-entropy` | Process engines | `vaults-brainstorm-entropy` (8 entropy techniques) |
-| `synthesize-learnings` | Work management | `/kernel:retrospective` + phronesis-extract promotion gate |
-| `manage-a-knowledge-base` | Research & notes | CollabVault PKM family (triage/collide/weave/curate/forgetting-curve/lint) as one 6-phase kit |
+| `reality-audit` | Verify & review | the "verified live" lesson — the most-repeated pattern across the source body of work |
+| `test-the-measuring-stick` | Verify & review | cheap-floor / dummy-answer precedents (a content-free answer beat every model on a real eval) |
+| `audit-the-premise` | Verify & review | the investigation-first principle (false-premise tasks caught by reading reality first) |
+| `fresh-eyes-adversary-pass` | Verify & review | fresh-context adversary passes that caught blockers after "complete" was reported |
+| `brainstorm-with-entropy` | Process engines | an entropy-injection brainstorming workflow (8 named techniques) |
+| `synthesize-learnings` | Work management | a cross-session retrospective + the recurrence-based promotion gate |
+| `manage-a-knowledge-base` | Research & notes | a personal-knowledge-base family (triage / collide / weave / curate / decay / integrity) as one 6-phase kit |
 
 Rules folded into skills (not shipped as standalone skills or a separate pack): verify-live → `reality-audit`; reliability≠value and cheap-floor → `test-the-measuring-stick`; investigate-before-mutating / restore-in-place → `audit-the-premise`; root-cause-the-class → `fresh-eyes-adversary-pass`; recurrence-not-excitement → `synthesize-learnings` + the kit.
 
