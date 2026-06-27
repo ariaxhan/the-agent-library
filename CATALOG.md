@@ -72,6 +72,7 @@ Standalone coding skills. Each works on its own — copy just the one you need; 
 | [`design-api-contracts`](./code-engineering/design-api-contracts) | Design or review REST/API contracts, errors, pagination, versioning, and agent-facing endpoints. |
 | [`secure-code-changes`](./code-engineering/secure-code-changes) | Review or implement sensitive code touching auth, secrets, permissions, inputs, payments, or PII. |
 | [`orchestrate-coding-agents`](./code-engineering/orchestrate-coding-agents) | Split coding work across agents with scoped contracts, isolation, and verification. |
+| [`secure-keys`](./code-engineering/secure-keys) | Audit how your AI tools and agents hold API keys: find exposed keys, move connections to OAuth, migrate the rest to secure storage with runtime lookups, then rotate and scope. |
 
 ## Shipping
 
