@@ -29,7 +29,7 @@ These are the point of the repo: standalone process engines, generalized from ke
 
 ## Code Engineering (standalone)
 
-Code skills are one category, not the whole repo. Each is **standalone** — it works copied on its own, with no dependency on a parent system, local AgentDB, hooks, or sibling skills. (Originally derived from `kernel-claude` methodology, then de-coupled.)
+Code skills are one category, not the whole repo. Each is **standalone**: it works copied on its own, with no dependency on a parent system, local AgentDB, hooks, or sibling skills. (Originally derived from `kernel-claude` methodology, then de-coupled.)
 
 | Source skill | Packaged skill | Category | Output | Generalization |
 |---|---|---|---|---|
@@ -45,7 +45,7 @@ Code skills are one category, not the whole repo. Each is **standalone** — it 
 | Skill | Category | Call |
 |---|---|---|
 | [`humanize-ai-prose`](../creative-taste/humanize-ai-prose) | Creative & taste systems | Keep. Ordered editing workflow with companion checklist. |
-| `train-a-taste-model` | — | **Deleted** in the non-coder pass. Too niche/ML-specific for a general audience. |
+| `train-a-taste-model` | n/a | **Deleted** in the non-coder pass. Too niche/ML-specific for a general audience. |
 
 ## Still Draft
 
@@ -63,13 +63,13 @@ Code skills are one category, not the whole repo. Each is **standalone** — it 
 
 ## Non-Coder Pass (2026-06-26)
 
-Reframed the whole library for a general (non-coder) audience. Deleted `train-a-taste-model`. Kept the six code skills but reframed them as standalone (not a kernel-derived system). Mined the broader body of work — tradition, kernel commands, CollabVault, chronicles, experiments — for proven, generalizable *process* patterns, then built the first wave.
+Reframed the whole library for a general (non-coder) audience. Deleted `train-a-taste-model`. Kept the six code skills but reframed them as standalone (not a kernel-derived system). Mined the broader body of work (tradition, kernel commands, CollabVault, chronicles, experiments) for proven, generalizable *process* patterns, then built the first wave.
 
 Built this pass:
 
 | Skill | Category | Source / evidence |
 |---|---|---|
-| `reality-audit` | Verify & review | the "verified live" lesson — the most-repeated pattern across the source body of work |
+| `reality-audit` | Verify & review | the "verified live" lesson: the most-repeated pattern across the source body of work |
 | `test-the-measuring-stick` | Verify & review | cheap-floor / dummy-answer precedents (a content-free answer beat every model on a real eval) |
 | `audit-the-premise` | Verify & review | the investigation-first principle (false-premise tasks caught by reading reality first) |
 | `fresh-eyes-adversary-pass` | Verify & review | fresh-context adversary passes that caught blockers after "complete" was reported |

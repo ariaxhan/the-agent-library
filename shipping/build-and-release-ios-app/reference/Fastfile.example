@@ -3,7 +3,7 @@ default_platform(:ios)
 # ═══════════════════════════════════════════════════════════════════════════════
 # Key-only TestFlight pipeline. ONE credential: an App Store Connect API key (.p8).
 # No interactive Apple ID login, no portal clicking, nothing to restore on a fresh
-# machine — the key mints the distribution cert/profile on demand.
+# machine: the key mints the distribution cert/profile on demand.
 #
 # Replace the placeholders below. Keep the .p8 GITIGNORED, never in the tree.
 # Capacitor: run web build + `npx cap sync ios` BEFORE these lanes.
@@ -22,12 +22,12 @@ platform :ios do
   # ── First run only: create the App Store Connect app record, non-interactively. ──
   desc "Create the App Store Connect app record (first run only)"
   lane :register do
-    # The key call MUST run first: produce() has no api_key option — it reads the token
+    # The key call MUST run first: produce() has no api_key option. It reads the token
     # from the lane context (Spaceship::ConnectAPI) that this call sets.
     app_store_connect_api_key(key_id: ASC_KEY_ID, issuer_id: ASC_ISSUER_ID, key_filepath: ASC_KEY_PATH)
     # skip_devcenter: true → only create the App Store Connect record (token auth). The
     # Developer-Portal half uses legacy Apple-ID web login the key can't satisfy; we don't
-    # need it — xcodebuild -allowProvisioningUpdates auto-creates the App ID during :beta.
+    # need it: xcodebuild -allowProvisioningUpdates auto-creates the App ID during :beta.
     produce(
       app_identifier: BUNDLE_ID,
       app_name: APP_NAME,
@@ -42,7 +42,7 @@ platform :ios do
     api_key = app_store_connect_api_key(
       key_id: ASC_KEY_ID, issuer_id: ASC_ISSUER_ID, key_filepath: ASC_KEY_PATH,
     )
-    # build_app has NO api_key param — xcodebuild authenticates for automatic provisioning
+    # build_app has NO api_key param: xcodebuild authenticates for automatic provisioning
     # via -authenticationKey* flags. The key path MUST be absolute or auth silently fails.
     auth_key_path = File.expand_path("../#{ASC_KEY_PATH}", __dir__)
 

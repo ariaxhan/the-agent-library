@@ -1,4 +1,4 @@
-# Humanize — the taste checklist
+# Humanize: the taste checklist
 
 Run after the seven transform passes in `SKILL.md`. These are judgment calls; no
 find-and-replace can make them. Answer each honestly. A "no" means the piece goes back in.
@@ -18,7 +18,7 @@ find-and-replace can make them. Answer each honestly. A "no" means the piece goe
 - [ ] **Would you say this out loud?** Pick the three most polished sentences and say them.
   If any reads like a press release, rewrite it in spoken words.
 - [ ] **Did the mic drops earn it?** Max two one-line dramatic closers, each landing on the
-  piece's actual strongest beat — not just a section boundary. A mic drop on a
+  piece's actual strongest beat, not just a section boundary. A mic drop on a
   medium-strength point is worse than no mic drop.
 - [ ] **Is the looseness real or performed?** A planted "lol" or strategically casual
   fragment reads worse than clean prose. Looseness should come from drafting fast, not from

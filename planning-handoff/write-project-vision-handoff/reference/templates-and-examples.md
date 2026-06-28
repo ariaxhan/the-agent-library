@@ -1,11 +1,11 @@
-# Vision Handoff — Templates & Examples
+# Vision Handoff: Templates & Examples
 
 Full document templates and worked example patterns. Moved out of SKILL.md. Load when actually writing VISION.md / FLOWCHARTS.md.
 
 ## VISION.md Template
 
 ```markdown
-# [PROJECT NAME] — [One-Line Description]
+# [PROJECT NAME]: [One-Line Description]
 
 <!--
 ●CONTEXT|type:seed_document|for:coding_agent|purpose:[specific_purpose]

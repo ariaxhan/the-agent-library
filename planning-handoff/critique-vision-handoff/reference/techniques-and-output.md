@@ -1,4 +1,4 @@
-# Vision Critique — Output Format, Techniques & Protocol
+# Vision Critique: Output Format, Techniques & Protocol
 
 Detail moved out of SKILL.md. Load when producing the critique document.
 

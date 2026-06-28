@@ -1,6 +1,6 @@
 # Catalog
 
-Every top-level folder is a category shelf. A skill is any child folder with a `SKILL.md`. Most skills are for general agent use — thinking, deciding, verifying, researching, writing, running work — across Claude, Codex, and other AI agents. Coding skills are one category, and each stands alone.
+Every top-level folder is a category shelf. A skill is any child folder with a `SKILL.md`. Most skills are for general agent use (thinking, deciding, verifying, researching, writing, running work) across Claude, Codex, and other AI agents. Coding skills are one category, and each stands alone.
 
 ## Verify & Review
 
@@ -9,7 +9,7 @@ The spine of the library: how to trust AI work instead of believing its "done."
 | Skill | Use it when |
 |---|---|
 | [`reality-audit`](./verify-and-review/reality-audit) | An AI or person reports work as done and you need what's corroborated vs only self-reported. |
-| [`test-the-measuring-stick`](./verify-and-review/test-the-measuring-stick) | You're trusting a score, grade, or ranking — especially an AI grading its own output. |
+| [`test-the-measuring-stick`](./verify-and-review/test-the-measuring-stick) | You're trusting a score, grade, or ranking, especially an AI grading its own output. |
 | [`audit-the-premise`](./verify-and-review/audit-the-premise) | A task assumes something is broken/true/decided before you act on it. |
 | [`fresh-eyes-adversary-pass`](./verify-and-review/fresh-eyes-adversary-pass) | Something substantial is finished and about to ship, publish, or submit. |
 
@@ -46,7 +46,7 @@ Standalone, general-purpose loops for making Claude work better.
 |---|---|
 | [`hunt-research-sources`](./research-notes/hunt-research-sources) | Run a broad source hunt and produce ranked findings, conflicts, rejections, and gaps. |
 | [`extract-source-to-notes`](./research-notes/extract-source-to-notes) | Process one URL, paper, article, transcript, or pasted source into structured notes. |
-| [`manage-a-knowledge-base`](./research-notes/manage-a-knowledge-base) | Run a notes vault / second brain as a system: triage, connect, synthesize, curate, decay, audit. (Kit — 6 phases.) |
+| [`manage-a-knowledge-base`](./research-notes/manage-a-knowledge-base) | Run a notes vault / second brain as a system: triage, connect, synthesize, curate, decay, audit. (Kit: 6 phases.) |
 
 ## Creative & Taste
 
@@ -63,7 +63,7 @@ Standalone, general-purpose loops for making Claude work better.
 
 ## Code Engineering
 
-Standalone coding skills. Each works on its own — copy just the one you need; none depend on the others or on a parent system.
+Standalone coding skills. Each works on its own: copy just the one you need; none depend on the others or on a parent system.
 
 | Skill | Use it when |
 |---|---|
@@ -74,14 +74,14 @@ Standalone coding skills. Each works on its own — copy just the one you need; 
 | [`secure-code-changes`](./code-engineering/secure-code-changes) | Review or implement sensitive code touching auth, secrets, permissions, inputs, payments, or PII. |
 | [`orchestrate-coding-agents`](./code-engineering/orchestrate-coding-agents) | Split coding work across agents with scoped contracts, isolation, and verification. |
 | [`secure-keys`](./code-engineering/secure-keys) | Audit how your AI tools and agents hold API keys: find exposed keys, move connections to OAuth, migrate the rest to secure storage with runtime lookups, then rotate and scope. |
-| [`build-sites-as-specs`](./code-engineering/build-sites-as-specs) | Architect a site generator that can't produce slop — compile a validated spec into output instead of generating HTML; quality becomes policies the model can't bypass. |
+| [`build-sites-as-specs`](./code-engineering/build-sites-as-specs) | Architect a site generator that can't produce slop: compile a validated spec into output instead of generating HTML, so quality becomes policies the model can't bypass. |
 
 ## Shipping
 
 | Skill | Use it when |
 |---|---|
-| [`audit-website-quality`](./shipping/audit-website-quality) | Audit any site before launch against the full policy bank — SEO, a11y, performance, responsive, security, anti-slop content, links, structured data — with graded findings. |
-| [`prep-site-for-ai`](./shipping/prep-site-for-ai) | Make a site legible to LLMs, AI search, and agents: structured data, llms.txt, server-rendered facts, crawler access, provenance — so AI quotes you right instead of guessing. |
+| [`audit-website-quality`](./shipping/audit-website-quality) | Audit any site before launch against the full policy bank (SEO, a11y, performance, responsive, security, anti-slop content, links, structured data) with graded findings. |
+| [`prep-site-for-ai`](./shipping/prep-site-for-ai) | Make a site legible to LLMs, AI search, and agents: structured data, llms.txt, server-rendered facts, crawler access, provenance, so AI quotes you right instead of guessing. |
 | [`build-and-release-ios-app`](./shipping/build-and-release-ios-app) | Draft. Current body covers ASC-key TestFlight upload; needs full release lifecycle. |
 
 ## Operating Patterns

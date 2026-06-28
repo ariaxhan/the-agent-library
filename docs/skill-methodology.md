@@ -4,7 +4,7 @@ Date: 2026-06-25
 
 This repo is a category-first skill collection. Top-level category folders are shelves; each child folder with `SKILL.md` is a skill.
 
-Default target: **general-purpose Claude usage for non-coders** — thinking, deciding, verifying, researching, writing, running work. The spine of the library is the verify-and-review family: how to trust AI work instead of believing its "done." Code skills are one category, not the center. Each code skill must be **standalone** — it works on its own, copied alone, with no dependency on a parent system, local AgentDB, hooks, private paths, or sibling skills.
+Default target: **general-purpose Claude usage for non-coders** (thinking, deciding, verifying, researching, writing, running work). The spine of the library is the verify-and-review family: how to trust AI work instead of believing its "done." Code skills are one category, not the center. Each code skill must be **standalone**: it works on its own, copied alone, with no dependency on a parent system, local AgentDB, hooks, private paths, or sibling skills.
 
 Rules and one-line principles are not skills. The valuable ones are folded into the skill they support (as a short principle inside the workflow), not shipped as standalone "skills" or a separate rules pack.
 

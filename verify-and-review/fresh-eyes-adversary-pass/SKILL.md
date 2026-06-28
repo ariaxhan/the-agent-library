@@ -1,17 +1,17 @@
 ---
 name: fresh-eyes-adversary-pass
-description: Run a fresh, adversarial review on near-final work before it ships. Use when something substantial is finished and about to be sent, published, or submitted — a deck, a contract, a launch email, a research report, a product page, an application. Triggers include "find what's broken before I send this", "fresh eyes on this", "review before launch", "assume it's broken and attack it", "what would a reviewer reject". Produces a ranked defect list separating real defects from nitpicks, with a ship-or-hold verdict tied to a live re-check.
+description: Run a fresh, adversarial review on near-final work before it ships. Use when something substantial is finished and about to be sent, published, or submitted: a deck, a contract, a launch email, a research report, a product page, an application. Triggers include "find what's broken before I send this", "fresh eyes on this", "review before launch", "assume it's broken and attack it", "what would a reviewer reject". Produces a ranked defect list separating real defects from nitpicks, with a ship-or-hold verdict tied to a live re-check.
 ---
 
 # Fresh-Eyes Adversary Pass
 
-The person who made the thing cannot be the one who certifies it — they read what they meant, not what's there. This is the opposite stance: come in cold, assume it's broken, and try to break it before a reviewer, a customer, or reality does.
+The person who made the thing cannot be the one who certifies it: they read what they meant, not what's there. This is the opposite stance: come in cold, assume it's broken, and try to break it before a reviewer, a customer, or reality does.
 
 Run it on anything substantial right before it leaves your hands.
 
 ## 1. Reset to a cold, hostile stance
 
-Review as if you have never seen this work and you've just been told it's broken. Separate the maker from the auditor for real — a fresh chat, a different session, or a deliberate dump of every assumption you carried in. A maker auditing their own numbers will pass them; that's the failure mode this exists to defeat.
+Review as if you have never seen this work and you've just been told it's broken. Separate the maker from the auditor for real: a fresh chat, a different session, or a deliberate dump of every assumption you carried in. A maker auditing their own numbers will pass them; that's the failure mode this exists to defeat.
 
 ## 2. Attack what "complete" hides
 
@@ -19,7 +19,7 @@ Hunt the defects that survive a confident "done":
 
 - Wrong language, locale, currency, or audience slipped through.
 - An error that was swallowed and looks like success.
-- A stale value — an old price, name, date, or link copied from a previous version.
+- A stale value: an old price, name, date, or link copied from a previous version.
 - A claim in the work that does not match the actual artifact.
 - The one path nobody actually walked end-to-end.
 
@@ -35,7 +35,7 @@ For each real defect, ask whether it's a one-off or a symptom. One stale link us
 
 ## 5. Fix, then re-confirm live
 
-Fix the real defects. Then verify against the live artifact — open the real thing and check, don't re-read the report. Ship only after the blockers are gone and confirmed in reality.
+Fix the real defects. Then verify against the live artifact: open the real thing and check, don't re-read the report. Ship only after the blockers are gone and confirmed in reality.
 
 ## Output
 

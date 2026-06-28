@@ -33,14 +33,14 @@ runner needs nothing but the `.p8`, the key ID, and the issuer ID.
 
 ## The procedure
 
-All lanes call `app_store_connect_api_key(...)` **first** — it stuffs the token into the
+All lanes call `app_store_connect_api_key(...)` **first**: it stuffs the token into the
 lane context (`Spaceship::ConnectAPI`), which is how `produce`, `upload_to_testflight`,
 and `deliver` authenticate without a login. They have no `api_key` of their own to pass it.
 
 1. **Register the app record (first run only).**
    `produce` with `skip_devcenter: true`. This creates *only* the App Store Connect
    record via the token-auth API. We skip the Developer-Portal half because that uses
-   legacy Apple-ID web login the key can't satisfy — and we don't need it: the App ID in
+   legacy Apple-ID web login the key can't satisfy, and we don't need it: the App ID in
    the portal gets auto-created by `xcodebuild -allowProvisioningUpdates` during the build.
 
 2. **Build + upload to TestFlight (`:beta`).**
@@ -53,7 +53,7 @@ and `deliver` authenticate without a login. They have no `api_key` of their own 
            "-authenticationKeyIssuerID YOUR_ISSUER_ID " \
            "-authenticationKeyPath #{absolute_path_to_p8}"
    ```
-   The `-authenticationKeyPath` **must be absolute** — relative paths silently fail to
+   The `-authenticationKeyPath` **must be absolute**: relative paths silently fail to
    authenticate. `File.expand_path("../keys/AuthKey_XXXX.p8", __dir__)` from the Fastfile.
    Then `upload_to_testflight(api_key: api_key, skip_waiting_for_build_processing: true)`.
 
@@ -70,30 +70,30 @@ and `deliver` authenticate without a login. They have no `api_key` of their own 
    Same as `:beta` plus `catalyst_platform: "macos"` in `build_app` and
    `app_platform: "osx"` in `upload_to_testflight`. With `SUPPORTS_MACCATALYST=YES` and
    `DERIVE_MACCATALYST_PRODUCT_BUNDLE_IDENTIFIER=NO` in the target, the Mac build shares
-   the **same bundle id and ASC record** as iOS (Universal Purchase) — no separate record.
+   the **same bundle id and ASC record** as iOS (Universal Purchase): no separate record.
 
 6. **macOS screenshots (`:mac_screenshots`).**
    `upload_to_app_store(platform: "osx", screenshots_path: "./fastlane/screenshots-mac")`.
    Catalyst screenshots are **2880×1800**; deliver auto-maps that size to the
-   `APP_DESKTOP` display type — you don't name the display type yourself.
+   `APP_DESKTOP` display type. You don't name the display type yourself.
 
 7. **Mint the Mac installer cert key-only (`:mac_cert`), if uploading a Catalyst build.**
    The ASC API *can* create certificates (`POST /v1/certificates`), so
    `cert(platform: "macos", type: "mac_installer_distribution", api_key: api_key)`
-   generates the CSR, creates + downloads the cert, and imports it to the keychain — no
+   generates the CSR, creates + downloads the cert, and imports it to the keychain. No
    portal click. Idempotent: reuses an existing valid cert.
 
 ## Gotchas & failure modes
 
 - **`app_store_connect_api_key` must run first**, in every lane. If `produce`/`deliver`/
   `pilot` prompts for an Apple ID, you forgot it or it ran after.
-- **`build_app` has no `api_key`** — authenticate via `xcargs -authenticationKey*`. Easy to
+- **`build_app` has no `api_key`**: authenticate via `xcargs -authenticationKey*`. Easy to
   pass the key everywhere *except* the build and then wonder why signing prompts for login.
 - **`-authenticationKeyPath` must be ABSOLUTE.** Relative path = silent auth failure.
 - **`produce` without `skip_devcenter: true`** falls back to legacy web login (Apple ID +
   password) for the portal half → forces an interactive login. Always skip devcenter.
 - **Expo / Capacitor regenerate the project** (`expo prebuild --clean`,
-  `npx cap sync ios`) and wipe signing build settings — that's exactly why
+  `npx cap sync ios`) and wipe signing build settings: that's exactly why
   `DEVELOPMENT_TEAM` + `CODE_SIGN_STYLE` go through `xcargs`, not the project file. For
   Capacitor: run the web build + `npx cap sync ios` **before** the lane.
 - **Reused build number** is auto-rejected by TestFlight. Keep the build number ahead of

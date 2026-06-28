@@ -1,4 +1,4 @@
-# HTTP conventions — lookup tables for `design-api-contracts`
+# HTTP conventions: lookup tables for `design-api-contracts`
 
 The exhaustive enumerations the skill points to. The SKILL body carries the decisions; this
 file carries the full lookups so they stay copy-pasteable without bloating the workflow.
@@ -29,7 +29,7 @@ Prefer a consistent success envelope:
 { "data": {}, "meta": {}, "links": {} }
 ```
 
-Errors should include stable, machine-readable codes — never a bare string:
+Errors should include stable, machine-readable codes, never a bare string:
 
 ```json
 { "error": { "code": "invalid_email", "message": "Invalid email", "details": [] } }

@@ -27,7 +27,7 @@ Use action endpoints sparingly, like `POST /orders/{id}/cancel`.
 
 ## 2. Specify status codes
 
-Pick the semantically correct code for every outcome — `2xx` success, `4xx` caller error,
+Pick the semantically correct code for every outcome: `2xx` success, `4xx` caller error,
 `5xx` server/dependency failure. Never return `200` for errors. Full code table:
 [`reference/http-conventions.md`](./reference/http-conventions.md).
 
@@ -35,7 +35,7 @@ Pick the semantically correct code for every outcome — `2xx` success, `4xx` ca
 
 Define request params, request body schema, success response, error response, and the
 pagination shape for list endpoints. Use a consistent success envelope and stable,
-machine-readable error codes — never a bare string error. The envelope and error templates
+machine-readable error codes, never a bare string error. The envelope and error templates
 live in [`reference/http-conventions.md`](./reference/http-conventions.md).
 
 ## 4. Add pagination and idempotency
@@ -70,6 +70,6 @@ For AI/automation clients:
 ## 7. Review checklist
 
 Before implementation or merge, walk the contract against the review checklist in
-[`reference/http-conventions.md`](./reference/http-conventions.md) — no verbs in resource
+[`reference/http-conventions.md`](./reference/http-conventions.md): no verbs in resource
 URLs, no unbounded list endpoints, no bare-string or `200` errors, validation before
 processing, auth named, breaking changes versioned, agent endpoints document retry safety.

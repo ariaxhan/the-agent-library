@@ -1,9 +1,9 @@
 # Failure-map template
 
 Copy this into `research/<topic>.md` in your durable notes store and fill it in. Subsequent
-work cites specific row numbers from it. Aim for a **minimum ~10 unique entries** — below 10
+work cites specific row numbers from it. Aim for a **minimum ~10 unique entries**: below 10
 usually means the channels weren't queried hard enough; expand the search or add the forums
-channel before declaring the map done. Every row needs a resolving source URL — no URL, no row.
+channel before declaring the map done. Every row needs a resolving source URL: no URL, no row.
 
 ```markdown
 ---
