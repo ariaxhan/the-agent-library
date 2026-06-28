@@ -27,43 +27,16 @@ Use action endpoints sparingly, like `POST /orders/{id}/cancel`.
 
 ## 2. Specify status codes
 
-Use semantic status codes:
-
-- `200` success
-- `201` created
-- `204` no content
-- `400` malformed request
-- `401` unauthenticated
-- `403` forbidden
-- `404` not found
-- `409` conflict
-- `422` validation failure
-- `429` rate limited
-- `500/502/503` server or dependency failure
-
-Never return `200` for errors.
+Pick the semantically correct code for every outcome — `2xx` success, `4xx` caller error,
+`5xx` server/dependency failure. Never return `200` for errors. Full code table:
+[`reference/http-conventions.md`](./reference/http-conventions.md).
 
 ## 3. Validate request and response shape
 
-Define:
-
-- Request params
-- Request body schema
-- Success response
-- Error response
-- Pagination shape for list endpoints
-
-Prefer consistent envelopes:
-
-```json
-{ "data": {}, "meta": {}, "links": {} }
-```
-
-Errors should include stable machine-readable codes:
-
-```json
-{ "error": { "code": "invalid_email", "message": "Invalid email", "details": [] } }
-```
+Define request params, request body schema, success response, error response, and the
+pagination shape for list endpoints. Use a consistent success envelope and stable,
+machine-readable error codes — never a bare string error. The envelope and error templates
+live in [`reference/http-conventions.md`](./reference/http-conventions.md).
 
 ## 4. Add pagination and idempotency
 
@@ -96,13 +69,7 @@ For AI/automation clients:
 
 ## 7. Review checklist
 
-Before implementation or merge:
-
-- No verbs in normal resource URLs
-- No unbounded list endpoints
-- No bare string errors
-- No `200` error responses
-- Validation happens before processing
-- Auth and authorization requirements are named
-- Breaking changes are versioned
-- Agent-facing endpoints document retry safety
+Before implementation or merge, walk the contract against the review checklist in
+[`reference/http-conventions.md`](./reference/http-conventions.md) — no verbs in resource
+URLs, no unbounded list endpoints, no bare-string or `200` errors, validation before
+processing, auth named, breaking changes versioned, agent endpoints document retry safety.

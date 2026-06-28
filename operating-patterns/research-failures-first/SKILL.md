@@ -56,35 +56,9 @@ top up a thin result set.
 ## The deliverable
 
 One persistent, committed file at `research/<topic>.md` in your durable notes store.
-Subsequent work cites specific row numbers from it. Format:
-
-```markdown
----
-topic: <topic name>
-status: canonical
-last_updated: YYYY-MM-DD
-channels_run: [post-mortems, issue-tracker]
-entries: <count>
----
-
-# <Topic> failure modes
-
-## TL;DR
-1–3 sentences: what works, what to avoid, the stack verdict.
-
-## Failure-mode table
-| # | Symptom | Root cause | Fix | Source URL |
-|---|---|---|---|---|
-| 1 | <what the user/operator sees> | <why it breaks> | <minimal fix> | <link> |
-| 2 | ... | ... | ... | ... |
-
-## Pre-flight checklist
-- [ ] <item from the table to verify before this work starts>
-- [ ] ...
-
-## Notes
-Open questions, version-specific caveats.
-```
+Subsequent work cites specific row numbers from it. The full fill-in-the-blank format —
+frontmatter, TL;DR, failure-mode table, pre-flight checklist — is in
+[`reference/failure-map-template.md`](./reference/failure-map-template.md).
 
 **Minimum ~10 unique entries.** Below 10 usually means the channels weren't queried hard
 enough — expand the search or add the forums channel before declaring the map done.

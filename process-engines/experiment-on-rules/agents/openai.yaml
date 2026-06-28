@@ -1,5 +1,5 @@
 interface:
-  display_name: "Experiment On Rules"
+  display_name: "Experiment on Rules"
   short_description: "Test workflows as hypotheses"
   default_prompt: "Use $experiment-on-rules to test whether this rule or workflow is actually working."
 

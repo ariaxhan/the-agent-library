@@ -1,5 +1,5 @@
 interface:
-  display_name: "Harden Rules Into Hooks"
+  display_name: "Harden Rules into Hooks"
   short_description: "Turn process rules into checks"
   default_prompt: "Use $harden-rules-into-hooks to decide which rules should become enforceable hooks."
 

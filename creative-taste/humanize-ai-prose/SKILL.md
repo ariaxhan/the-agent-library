@@ -91,7 +91,7 @@ highest-leverage fix remains one true, named detail per section.
 
 ## The taste checklist
 
-After the passes, walk the judgment calls in `checklist.md`. A "no" sends the piece back.
+After the passes, walk the judgment calls in `reference/checklist.md`. A "no" sends the piece back.
 The three that matter most:
 
 - **Could only this author have written it?** Swap the byline — is there at least one

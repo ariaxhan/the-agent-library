@@ -1,0 +1,7 @@
+interface:
+  display_name: "Prep Site for AI"
+  short_description: "Make a site legible to AI readers"
+  default_prompt: "Use $prep-site-for-ai to make this site readable and quotable by LLMs, AI search, and agents."
+
+policy:
+  allow_implicit_invocation: true

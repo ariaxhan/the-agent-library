@@ -17,7 +17,7 @@ Before writing files, decide what the artifact is:
 | Draft skill | Real workflow but incomplete body, name, trigger, or bundled files | `skills/<name>/` with explicit draft status |
 | Kit | Installable system made of hooks, templates, multiple files, or multiple skills | `kits/` |
 | Rule/pattern | Principle, invariant, hook pattern, or one-step guardrail | `rules/` or docs, not `skills/` |
-| Reference | Background methodology a skill can point to | `references/` |
+| Reference | Background methodology a skill can point to | `reference/` |
 | Reject | Too vague, too local, not a workflow, no crisp trigger | Do not catalog |
 
 If it could be one bullet in a rules file, do not make it a skill.

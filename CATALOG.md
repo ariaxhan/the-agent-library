@@ -53,6 +53,7 @@ Standalone, general-purpose loops for making Claude work better.
 | Skill | Use it when |
 |---|---|
 | [`humanize-ai-prose`](./creative-taste/humanize-ai-prose) | Revise AI-shaped writing into specific, human prose. |
+| [`train-a-taste-model`](./creative-taste/train-a-taste-model) | Train a small model on your own archive that ranks new items the way you would, from curation signals you already produced. |
 
 ## Skill Craft
 

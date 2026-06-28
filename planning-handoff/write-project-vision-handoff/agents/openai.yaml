@@ -1,5 +1,5 @@
 interface:
-  display_name: "Write Vision Handoff"
+  display_name: "Write Project Vision Handoff"
   short_description: "Create VISION and flow docs"
   default_prompt: "Use $write-project-vision-handoff to turn this plan into implementation handoff docs."
 

@@ -133,4 +133,4 @@ lane :beta do
 end
 ```
 
-Full commented template with every lane: `Fastfile.example` (same directory).
+Full commented template with every lane: `reference/Fastfile.example`.

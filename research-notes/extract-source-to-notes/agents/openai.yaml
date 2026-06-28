@@ -1,5 +1,5 @@
 interface:
-  display_name: "Extract Source To Notes"
+  display_name: "Extract Source to Notes"
   short_description: "Distill one source into notes"
   default_prompt: "Use $extract-source-to-notes to process this source into structured notes."
 

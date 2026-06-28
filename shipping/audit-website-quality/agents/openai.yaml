@@ -1,0 +1,7 @@
+interface:
+  display_name: "Audit Website Quality"
+  short_description: "Grade a site against the policy bank"
+  default_prompt: "Use $audit-website-quality to audit this site for SEO, accessibility, performance, security, and anti-slop content."
+
+policy:
+  allow_implicit_invocation: true

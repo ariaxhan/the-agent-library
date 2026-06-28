@@ -1,0 +1,7 @@
+interface:
+  display_name: "Build Sites as Specs"
+  short_description: "Compile sites instead of generating slop"
+  default_prompt: "Use $build-sites-as-specs to architect a spec-driven site generator that structurally cannot produce slop."
+
+policy:
+  allow_implicit_invocation: true

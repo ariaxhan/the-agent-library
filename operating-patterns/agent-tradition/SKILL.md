@@ -69,7 +69,7 @@ record:
 
 Prose rules drift under load — an agent skips the file it was "supposed" to read.
 So the loop is **hook-enforced**, not aspirational. Three hooks (full spec in
-`reference.md`):
+`reference/adoption.md`):
 
 1. **SessionStart — surface.** Prints the telos chain and points the agent at ethos +
    doctrine + canon before any source work. The tradition can't be invisible.
@@ -83,11 +83,11 @@ So the loop is **hook-enforced**, not aspirational. Three hooks (full spec in
 ## How to adopt it in your repo
 
 1. Create `_meta/` with the five files. Generic fill-in-the-blank templates for all
-   five (plus commission + chronicle) are in **`reference.md`** in this folder — copy
+   five (plus commission + chronicle) are in **`reference/adoption.md`** — copy
    them and replace the bracketed parts.
 2. Add the three hooks to `.claude/hooks/` and register them in `.claude/settings.json`
    (SessionStart / PreToolUse `Write|Edit` / Stop). The hook bodies + registration
-   JSON are in `reference.md`.
+   JSON are in `reference/adoption.md`.
 3. Fill in `telos.md` first — it's the spine; the hooks key off its presence.
 4. Seed `ethos.md` and `doctrine.md` from the baseline templates; leave `canon/` and
    `phronesis.md` empty. They earn their entries from real sessions.

@@ -1,0 +1,7 @@
+interface:
+  display_name: "Secure Keys"
+  short_description: "Lock down API keys and secrets"
+  default_prompt: "Use $secure-keys to audit and lock down how my AI tools hold API keys and credentials."
+
+policy:
+  allow_implicit_invocation: true
