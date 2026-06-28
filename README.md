@@ -1,6 +1,6 @@
-# portable-claude-skills
+# the-agent-library
 
-**A curated library of portable skills for getting real work out of Claude — most of them not about code at all.**
+**A curated library of portable skills for getting real work out of AI agents — Claude, Codex, and friends — most of them not about code at all.**
 
 This repo *is* the collection. There's no single `skills/` drawer; the top-level folders are category shelves, and every child folder with a `SKILL.md` is one skill you can copy and use.
 
