@@ -1,6 +1,7 @@
 ---
 name: synthesize-learnings
-description: Distill accumulated notes and lessons from many sessions into durable insight. Use when scattered learnings, journal entries, meeting takeaways, or decisions have piled up across time and need consolidating: "run a retrospective across my notes", "what have I learned", "clean up and promote my lessons", "synthesize my journal", "find the patterns in my notes". This is cross-session synthesis, distinct from writing up one session. Produces a deduped, contradiction-resolved note set, a list of promoted patterns with evidence, and a health summary.
+description: >-
+  Distill accumulated notes and lessons from many sessions into durable insight. Use when scattered learnings, journal entries, meeting takeaways, or decisions have piled up across time and need consolidating: "run a retrospective across my notes", "what have I learned", "clean up and promote my lessons", "synthesize my journal", "find the patterns in my notes". This is cross-session synthesis, distinct from writing up one session. Produces a deduped, contradiction-resolved note set, a list of promoted patterns with evidence, and a health summary.
 ---
 
 # Synthesize Learnings

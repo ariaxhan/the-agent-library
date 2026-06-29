@@ -1,6 +1,7 @@
 ---
 name: audit-the-premise
-description: Stress-test the assumption baked into a task before spending real effort on it. Use when a request asserts something is broken, true, already decided, or unchanged before you act on it: "fix the broken X", "since Tuesday it's been down", "just flip the existing thing", "the data already has Y". Triggers include "is this problem even real", "check the assumption before I start", "the request says X but is that true". Produces a confirmed-or-corrected understanding, a logged disagreement when the premise was wrong, and a safer revised plan.
+description: >-
+  Stress-test the assumption baked into a task before spending real effort on it. Use when a request asserts something is broken, true, already decided, or unchanged before you act on it: "fix the broken X", "since Tuesday it's been down", "just flip the existing thing", "the data already has Y". Triggers include "is this problem even real", "check the assumption before I start", "the request says X but is that true". Produces a confirmed-or-corrected understanding, a logged disagreement when the premise was wrong, and a safer revised plan.
 ---
 
 # Audit the Premise

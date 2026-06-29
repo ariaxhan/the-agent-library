@@ -1,6 +1,7 @@
 ---
 name: brainstorm-with-entropy
-description: Generate genuinely novel ideas by injecting entropy, ranked by surprise instead of safety. Use when the user asks to brainstorm, generate ideas, find an angle, or name something: "what could I build/make/write", "I need fresh ideas", "help me think of", "I'm stuck on the obvious options". Triggers also include "brainstorm with me" and "give me something unexpected". Produces a ranked list of ideas, each tagged with the technique that produced it, its core insight, its risk, and a cheap validation signal.
+description: >-
+  Generate genuinely novel ideas by injecting entropy, ranked by surprise instead of safety. Use when the user asks to brainstorm, generate ideas, find an angle, or name something: "what could I build/make/write", "I need fresh ideas", "help me think of", "I'm stuck on the obvious options". Triggers also include "brainstorm with me" and "give me something unexpected". Produces a ranked list of ideas, each tagged with the technique that produced it, its core insight, its risk, and a cheap validation signal.
 ---
 
 # Brainstorm with Entropy

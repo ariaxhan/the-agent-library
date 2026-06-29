@@ -1,6 +1,7 @@
 ---
 name: fresh-eyes-adversary-pass
-description: Run a fresh, adversarial review on near-final work before it ships. Use when something substantial is finished and about to be sent, published, or submitted: a deck, a contract, a launch email, a research report, a product page, an application. Triggers include "find what's broken before I send this", "fresh eyes on this", "review before launch", "assume it's broken and attack it", "what would a reviewer reject". Produces a ranked defect list separating real defects from nitpicks, with a ship-or-hold verdict tied to a live re-check.
+description: >-
+  Run a fresh, adversarial review on near-final work before it ships. Use when something substantial is finished and about to be sent, published, or submitted: a deck, a contract, a launch email, a research report, a product page, an application. Triggers include "find what's broken before I send this", "fresh eyes on this", "review before launch", "assume it's broken and attack it", "what would a reviewer reject". Produces a ranked defect list separating real defects from nitpicks, with a ship-or-hold verdict tied to a live re-check.
 ---
 
 # Fresh-Eyes Adversary Pass

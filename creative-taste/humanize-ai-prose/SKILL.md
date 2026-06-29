@@ -1,6 +1,7 @@
 ---
 name: humanize-ai-prose
-description: Rewrite AI-generated text into genuinely human prose with seven ordered transform passes: add real named specifics, fix the structure, kill the tells (em-dashes, intensifiers, negative parallelism, meta-signposts), admit real limits, and read it aloud.
+description: >-
+  Rewrite AI-generated text into genuinely human prose with seven ordered transform passes: add real named specifics, fix the structure, kill the tells (em-dashes, intensifiers, negative parallelism, meta-signposts), admit real limits, and read it aloud.
 ---
 
 # Humanize AI Prose

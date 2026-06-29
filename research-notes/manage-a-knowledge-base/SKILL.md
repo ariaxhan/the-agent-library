@@ -1,6 +1,7 @@
 ---
 name: manage-a-knowledge-base
-description: Run a personal knowledge base or second brain as a system, not a junk drawer. Use for any stage of a notes collection: "process my inbox / triage my captures", "find contradictions across my notes", "synthesize / weave these notes together", "prune / clean up my ideas list", "archive stale notes / decay scan", "check my notes for broken links or missing metadata", "manage my vault / zettelkasten / second brain". Produces filed notes, collision logs, synthesis notes, a pruned idea list, archive decisions, and an integrity report, depending on the phase invoked.
+description: >-
+  Run a personal knowledge base or second brain as a system, not a junk drawer. Use for any stage of a notes collection: "process my inbox / triage my captures", "find contradictions across my notes", "synthesize / weave these notes together", "prune / clean up my ideas list", "archive stale notes / decay scan", "check my notes for broken links or missing metadata", "manage my vault / zettelkasten / second brain". Produces filed notes, collision logs, synthesis notes, a pruned idea list, archive decisions, and an integrity report, depending on the phase invoked.
 ---
 
 # Manage a Knowledge Base

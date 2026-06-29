@@ -1,6 +1,7 @@
 ---
 name: test-the-measuring-stick
-description: Check whether a score, grade, or ranking actually has teeth before you trust it. Use when relying on any quality number: an AI grading its own or another AI's output, a rubric score on writing, a relevance ranking, a benchmark result. Triggers include "is this quality score real", "does my grader/eval actually work", "can I trust this ranking", "does this benchmark mean anything". Produces a dummy-answer result, a cheap-floor comparison, and a verdict on whether the measure is trustworthy.
+description: >-
+  Check whether a score, grade, or ranking actually has teeth before you trust it. Use when relying on any quality number: an AI grading its own or another AI's output, a rubric score on writing, a relevance ranking, a benchmark result. Triggers include "is this quality score real", "does my grader/eval actually work", "can I trust this ranking", "does this benchmark mean anything". Produces a dummy-answer result, a cheap-floor comparison, and a verdict on whether the measure is trustworthy.
 ---
 
 # Test the Measuring Stick

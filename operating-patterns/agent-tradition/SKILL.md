@@ -1,6 +1,7 @@
 ---
 name: agent-tradition
-description: Give AI coding agents durable institutional memory: purpose, falsifiable beliefs, narrative lessons, and hook-enforced session accountability, so each session makes the next one smarter instead of starting blind.
+description: >-
+  Give AI coding agents durable institutional memory: purpose, falsifiable beliefs, narrative lessons, and hook-enforced session accountability, so each session makes the next one smarter instead of starting blind.
 ---
 
 # Agent Tradition: institutional memory for AI coding agents
