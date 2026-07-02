@@ -1,0 +1,6 @@
+interface:
+  display_name: "Speech Protocols"
+  short_description: "Ambient speech forms for synthesis"
+  default_prompt: "Use $shape-speeches to shape a brief, pitch, advocacy piece, or paired speech."
+policy:
+  allow_implicit_invocation: true

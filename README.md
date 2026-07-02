@@ -26,7 +26,7 @@ A skill earns its place only if it is a real workflow (multi-step, non-obvious k
 | Folder | Skills | What lives here |
 |---|---|---|
 | [`verify-and-review/`](./verify-and-review) | 4 | Trusting AI work: audits, premise checks, adversarial review |
-| [`process-engines/`](./process-engines) | 4 | Forge, dream, brainstorm, and experiment loops for better thinking |
+| [`process-engines/`](./process-engines) | 6 | Forge, dream, brainstorm, experiment, debate, and speech loops for better thinking |
 | [`planning-handoff/`](./planning-handoff) | 2 | Specs, handoffs, critiques, implementation readiness |
 | [`work-management/`](./work-management) | 4 | Commissions, chronicles, learning synthesis, bounded autonomous loops |
 | [`research-notes/`](./research-notes) | 3 | Source hunts, single-source extraction, a full knowledge-base kit |
@@ -36,7 +36,7 @@ A skill earns its place only if it is a real workflow (multi-step, non-obvious k
 | [`shipping/`](./shipping) | 3 | Release and launch workflows |
 | [`operating-patterns/`](./operating-patterns) | 3 | Meta and methodology-shaped skills |
 
-34 skills total. [`docs/`](./docs) holds audits and maintenance notes, not installable skills.
+36 skills total. [`docs/`](./docs) holds audits and maintenance notes, not installable skills.
 
 ## The full shelf
 
