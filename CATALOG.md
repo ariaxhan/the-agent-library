@@ -23,8 +23,8 @@ Standalone, general-purpose loops for making Claude work better.
 | [`dream-solution-space`](./process-engines/dream-solution-space) | Expand and stress-test possible approaches before committing to one. |
 | [`brainstorm-with-entropy`](./process-engines/brainstorm-with-entropy) | Generate genuinely novel ideas, ranked by surprise instead of safety. |
 | [`experiment-on-rules`](./process-engines/experiment-on-rules) | Treat rules, prompts, habits, or workflows as hypotheses and test them with evidence. |
-| [`debate-decisions`](./process-engines/debate-decisions) | Use structured debate formats implicitly at decision, review, governance, and analysis points. |
-| [`shape-speeches`](./process-engines/shape-speeches) | Shape briefs, pitches, synthesis, advocacy, impromptu sensemaking, and paired speeches. |
+| [`debate-decisions`](./process-engines/debate-decisions) | Use structured debate formats for non-trivial decisions, reviews, governance, and live disagreement. |
+| [`shape-speeches`](./process-engines/shape-speeches) | Shape briefs, pitches, settled recommendations, advocacy, impromptu sensemaking, and paired speeches. |
 
 ## Planning & Handoff
 

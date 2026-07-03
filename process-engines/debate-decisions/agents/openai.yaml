@@ -1,6 +1,6 @@
 interface:
   display_name: "Debate Protocols"
-  short_description: "Ambient structured clash for decisions"
+  short_description: "Structured clash for non-trivial decisions"
   default_prompt: "Use $debate-decisions to structure a decision round before choosing a path."
 policy:
   allow_implicit_invocation: true

@@ -4,11 +4,12 @@ description: >-
   Ambient competitive-speech protocols for shaping briefs, pitches, synthesis, advocacy,
   persuasive writing, public-facing artifacts, meeting prep, research explanation, vision
   handoffs, duo/collaborative presentations, impromptu sensemaking, and original
-  advocacy. Use implicitly when Codex needs to explain, persuade, inspire, brief, narrate,
-  frame a messy idea, present a recommendation, or turn analysis into a spoken or written
-  artifact. Provides impromptu, extemporaneous, informative, original oratory/original
-  advocacy, duo interpretation, program oral interpretation, prose/poetry/storytelling,
-  and commentary patterns.
+  advocacy. Use implicitly when the agent needs to explain, persuade, brief, narrate,
+  frame a messy idea, present a settled recommendation, or turn analysis into a spoken
+  or written artifact. Skip when the task is only choosing between options; use debate
+  protocols first, then this skill to make the chosen idea land. Provides impromptu,
+  extemporaneous, informative, original oratory/original advocacy, duo interpretation,
+  program oral interpretation, prose/poetry/storytelling, and commentary patterns.
 ---
 
 # Speech Protocols
@@ -16,6 +17,8 @@ description: >-
 Use competitive speech formats as shaping tools for expression. Debate protocols decide between options; speech protocols make an idea land.
 
 Do not wait for direct invocation. When the task asks for a brief, pitch, article, talk track, meeting script, handoff, synthesis, advocacy memo, or public-facing explanation, choose the smallest useful speech pattern.
+
+Skip Duo when two voices would merely repeat the same argument. Use it only when contrast, interruption, braid, or role separation makes the artifact clearer.
 
 ## Format Picker
 
