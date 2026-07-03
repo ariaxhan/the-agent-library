@@ -8,10 +8,9 @@ The spine of the library: how to trust AI work instead of believing its "done."
 
 | Skill | Use it when |
 |---|---|
-| [`reality-audit`](./verify-and-review/reality-audit) | An AI or person reports work as done and you need what's corroborated vs only self-reported. |
+| [`reality-audit`](./verify-and-review/reality-audit) | A done report or near-final artifact needs corroboration, defect hunting, and a ship/hold verdict. |
 | [`test-the-measuring-stick`](./verify-and-review/test-the-measuring-stick) | You're trusting a score, grade, or ranking, especially an AI grading its own output. |
 | [`audit-the-premise`](./verify-and-review/audit-the-premise) | A task assumes something is broken/true/decided before you act on it. |
-| [`fresh-eyes-adversary-pass`](./verify-and-review/fresh-eyes-adversary-pass) | Something substantial is finished and about to ship, publish, or submit. |
 
 ## Process Engines
 
@@ -19,12 +18,11 @@ Standalone, general-purpose loops for making Claude work better.
 
 | Skill | Use it when |
 |---|---|
-| [`forge-autonomous-work`](./process-engines/forge-autonomous-work) | Take substantial work end to end with competing approaches, iteration, stress tests, and learning. |
+| [`forge-autonomous-work`](./process-engines/forge-autonomous-work) | Take substantial work end to end with competing approaches, runnable acceptance loops, stress tests, and learning. |
 | [`dream-solution-space`](./process-engines/dream-solution-space) | Expand and stress-test possible approaches before committing to one. |
 | [`brainstorm-with-entropy`](./process-engines/brainstorm-with-entropy) | Generate genuinely novel ideas, ranked by surprise instead of safety. |
 | [`experiment-on-rules`](./process-engines/experiment-on-rules) | Treat rules, prompts, habits, or workflows as hypotheses and test them with evidence. |
-| [`debate-decisions`](./process-engines/debate-decisions) | Use structured debate formats implicitly at decision, review, governance, and analysis points. |
-| [`shape-speeches`](./process-engines/shape-speeches) | Shape briefs, pitches, synthesis, advocacy, impromptu sensemaking, and paired speeches. |
+| [`debate-decisions`](./process-engines/debate-decisions) | Use structured debate formats for non-trivial decisions, reviews, governance, and live disagreement. |
 
 ## Planning & Handoff
 
@@ -40,7 +38,6 @@ Standalone, general-purpose loops for making Claude work better.
 | [`commission-work`](./work-management/commission-work) | Shape substantial work into authority, boundaries, outcomes, and checks before execution. |
 | [`write-session-chronicle`](./work-management/write-session-chronicle) | Record what changed, failed, was checked, and remains after substantial work. |
 | [`synthesize-learnings`](./work-management/synthesize-learnings) | Distill accumulated notes and lessons across many sessions into durable insight. |
-| [`run-autonomous-dev-loop`](./work-management/run-autonomous-dev-loop) | Iterate against runnable acceptance criteria until checks pass or guardrails escalate. |
 
 ## Research & Notes
 
