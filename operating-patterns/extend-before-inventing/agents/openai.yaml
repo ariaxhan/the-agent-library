@@ -1,0 +1,7 @@
+interface:
+  display_name: "Extend Before Inventing"
+  short_description: "Find and extend the existing spine before building new"
+  default_prompt: "Use $extend-before-inventing to search for the existing implementation first and extend it instead of building a parallel one."
+
+policy:
+  allow_implicit_invocation: true
