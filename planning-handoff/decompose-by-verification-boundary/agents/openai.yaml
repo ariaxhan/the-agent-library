@@ -1,0 +1,7 @@
+interface:
+  display_name: "Decompose by Verification Boundary"
+  short_description: "Split work into units that each carry their own gate"
+  default_prompt: "Use $decompose-by-verification-boundary to split this work into gated units, ordered by risk, each landing green before the next."
+
+policy:
+  allow_implicit_invocation: true
