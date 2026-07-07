@@ -1,5 +1,6 @@
 ---
 name: build-and-release-ios-app
+status: draft
 description: Draft skill for building and releasing iOS or macOS Catalyst apps. Current coverage is the App Store Connect API key TestFlight upload path; expand before publishing into the full lifecycle from app/design import through build, test, metadata, screenshots, TestFlight, and App Review submission.
 ---
 

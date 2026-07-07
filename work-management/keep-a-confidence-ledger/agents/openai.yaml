@@ -1,0 +1,7 @@
+interface:
+  display_name: "Keep a Confidence Ledger"
+  short_description: "One honest, evidence-backed map of subsystem state"
+  default_prompt: "Use $keep-a-confidence-ledger to record or check subsystem state with the four evidence-backed states, no percentages."
+
+policy:
+  allow_implicit_invocation: true

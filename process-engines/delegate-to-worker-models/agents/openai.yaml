@@ -1,0 +1,7 @@
+interface:
+  display_name: "Delegate to Worker Models"
+  short_description: "Safe cheap-model delegation via total-spec lane contracts"
+  default_prompt: "Use $delegate-to-worker-models to write the guide and lane contract, pick the model tier, and verify the returned work yourself."
+
+policy:
+  allow_implicit_invocation: true
