@@ -11,6 +11,7 @@ The spine of the library: how to trust AI work instead of believing its "done."
 | [`reality-audit`](./verify-and-review/reality-audit) | A done report or near-final artifact needs corroboration, defect hunting, and a ship/hold verdict. |
 | [`test-the-measuring-stick`](./verify-and-review/test-the-measuring-stick) | You're trusting a score, grade, or ranking, especially an AI grading its own output. |
 | [`audit-the-premise`](./verify-and-review/audit-the-premise) | A task assumes something is broken/true/decided before you act on it. |
+| [`verify-adversarially`](./verify-and-review/verify-adversarially) | Work needs to earn "done": a fresh-context agent attacks it, a coordinator adjudicates every finding. |
 
 ## Process Engines
 
@@ -23,6 +24,7 @@ Standalone, general-purpose loops for making Claude work better.
 | [`brainstorm-with-entropy`](./process-engines/brainstorm-with-entropy) | Generate genuinely novel ideas, ranked by surprise instead of safety. |
 | [`experiment-on-rules`](./process-engines/experiment-on-rules) | Treat rules, prompts, habits, or workflows as hypotheses and test them with evidence. |
 | [`debate-decisions`](./process-engines/debate-decisions) | Use structured debate formats for non-trivial decisions, reviews, governance, and live disagreement. |
+| [`delegate-to-worker-models`](./process-engines/delegate-to-worker-models) | Split work across agent lanes or hand implementation to a cheap model, with the lane contract and honest track record. |
 
 ## Planning & Handoff
 
@@ -30,6 +32,8 @@ Standalone, general-purpose loops for making Claude work better.
 |---|---|
 | [`write-project-vision-handoff`](./planning-handoff/write-project-vision-handoff) | Turn planning context into `VISION.md` and `FLOWCHARTS.md` for implementation. |
 | [`critique-vision-handoff`](./planning-handoff/critique-vision-handoff) | Stress-test a handoff, spec, architecture brief, or seed document before implementation. |
+| [`decompose-by-verification-boundary`](./planning-handoff/decompose-by-verification-boundary) | Split substantial work into units that each carry their own gate, ordered by risk. |
+| [`hand-off-before-context-death`](./planning-handoff/hand-off-before-context-death) | Pause or end a session by writing the handoff while the verified context is still loaded. |
 
 ## Work Management
 
@@ -38,6 +42,7 @@ Standalone, general-purpose loops for making Claude work better.
 | [`commission-work`](./work-management/commission-work) | Shape substantial work into authority, boundaries, outcomes, and checks before execution. |
 | [`write-session-chronicle`](./work-management/write-session-chronicle) | Record what changed, failed, was checked, and remains after substantial work. |
 | [`synthesize-learnings`](./work-management/synthesize-learnings) | Distill accumulated notes and lessons across many sessions into durable insight. |
+| [`keep-a-confidence-ledger`](./work-management/keep-a-confidence-ledger) | Subsystem state needs one honest map: four evidence-backed states, no percentages. |
 
 ## Research & Notes
 
@@ -90,6 +95,7 @@ Standalone coding skills. Each works on its own: copy just the one you need; non
 | [`agent-tradition`](./operating-patterns/agent-tradition) | Install or understand durable agent memory, commissions, chronicles, and accountability hooks. |
 | [`research-failures-first`](./operating-patterns/research-failures-first) | Research real-world failure modes before non-trivial implementation. |
 | [`harden-rules-into-hooks`](./operating-patterns/harden-rules-into-hooks) | Turn important agent/process rules into enforceable hooks or checks. |
+| [`extend-before-inventing`](./operating-patterns/extend-before-inventing) | You're about to create a file, helper, wrapper, or system: find and extend the existing spine first. |
 
 ## Mapped, Not Yet Built
 
@@ -97,6 +103,6 @@ Proven patterns from real work, queued for a later wave (each has source evidenc
 
 - **Verify & review:** `sweep-for-silent-failures`, `flag-dont-guess`, `bake-off-the-tool`, `test-the-judges-exact-flow`
 - **Thinking & deciding:** `stretch-an-idea`, `weigh-the-options`, `diagnose-before-fixing`
-- **Work management:** `pause-and-handoff`, `manage-the-context-window`
+- **Work management:** `manage-the-context-window`
 - **Creative & taste:** `match-a-defined-voice` (build-your-own voice system)
 - **Research & notes:** `daily-linked-news-brief`, `load-project-context`
