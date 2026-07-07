@@ -1,0 +1,7 @@
+interface:
+  display_name: "Verify Adversarially"
+  short_description: "Fresh-context attack plus coordinator adjudication"
+  default_prompt: "Use $verify-adversarially to attack this work with a fresh context and adjudicate every finding before calling it done."
+
+policy:
+  allow_implicit_invocation: true
