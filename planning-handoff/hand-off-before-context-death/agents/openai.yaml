@@ -1,0 +1,7 @@
+interface:
+  display_name: "Hand Off Before Context Death"
+  short_description: "Write the handoff while verified context is still loaded"
+  default_prompt: "Use $hand-off-before-context-death to stop building and write the state map, next action, failures, and reality hooks now."
+
+policy:
+  allow_implicit_invocation: true
