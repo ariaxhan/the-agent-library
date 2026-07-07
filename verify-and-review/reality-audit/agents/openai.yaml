@@ -1,7 +1,7 @@
 interface:
   display_name: "Reality Audit"
-  short_description: "Grade a done report vs reality"
-  default_prompt: "Use $reality-audit to check what's actually true in this 'done' report versus what's only self-reported."
+  short_description: "Corroborate done reports and pre-ship artifacts"
+  default_prompt: "Use $reality-audit to check what is actually true, what is self-reported, and what would block shipping."
 
 policy:
   allow_implicit_invocation: true

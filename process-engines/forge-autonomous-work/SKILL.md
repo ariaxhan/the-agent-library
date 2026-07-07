@@ -1,6 +1,6 @@
 ---
 name: forge-autonomous-work
-description: Run a bounded autonomous work loop that generates competing approaches, implements iteratively, stress-tests the result, learns from the output, and either ships or reports why it cannot. Use when the user asks to "forge this", "run autonomously", "take this end to end", "iterate until done", or wants Claude to complete a substantial task without step-by-step supervision. Produces an artifact, evidence log, and final verdict.
+description: Run a bounded autonomous work loop that generates competing approaches, implements iteratively, runs acceptance checks, stress-tests the result, learns from the output, and either ships or reports why it cannot. Use when the user asks to "forge this", "run autonomously", "take this end to end", "iterate until done", "iterate until tests pass", or provides runnable acceptance criteria for hands-off implementation. Produces an artifact, evidence log, passing checks or escalation record, and final verdict.
 ---
 
 # Forge Autonomous Work
@@ -19,8 +19,22 @@ Before starting, define:
 - Budget or iteration cap
 - Verification method
 - Stop conditions
+- Acceptance commands, if this is an implementation task
 
 If there is no checkable end state, do not forge. Use a planning or dream skill first.
+
+When the user provides a SPEC/GOAL/ACCEPTANCE block, run Forge in acceptance mode:
+
+```text
+SPEC: short name
+GOAL: observable outcome
+ACCEPTANCE:
+  - runnable command or check
+FILES: optional scope
+MAX_ITERATIONS: optional, default 5
+```
+
+Stop and clarify if every acceptance criterion is manual or opinion-based, the goal is vague, or the allowed file scope is risky.
 
 ## 1. Heat: generate competing approaches
 
@@ -47,12 +61,24 @@ Pick the strongest approach and work in tight loops:
 4. Fix implementation, not the check, unless the check is wrong.
 5. Record what changed.
 
+For acceptance mode, create an iteration log at `_meta/autonomous/YYYY-MM-DD-short-slug.md` or `docs/autonomous/YYYY-MM-DD-short-slug.md` when no `_meta/` exists. Record the goal, acceptance commands, scope, iteration count, files changed, check outputs, and escalation reason if any.
+
 If the same failure survives three attempts, classify it:
 
 - **Approach gap:** the strategy is wrong; try another approach.
 - **Contract gap:** the goal is ambiguous or impossible to verify; stop and report the gap.
 
 Do not burn cycles on a contract gap.
+
+Escalate instead of looping forever when any guardrail trips:
+
+- max iterations reached
+- same error signature appears 3 times
+- 3 iterations make no acceptance progress
+- required dependency or credential is missing
+- scope needs to expand materially
+- a destructive or irreversible operation would be needed
+- checks are flaky or not measuring the goal
 
 ## 3. Quench: stress-test the result
 
@@ -106,6 +132,7 @@ Return:
 - What shipped or was produced
 - Approaches considered
 - Checks run
+- Iterations used and iteration log path, if acceptance mode ran
 - Stress-test findings
 - Lessons learned
 - Remaining risks

@@ -13,7 +13,7 @@ Method: [skill-methodology.md](./skill-methodology.md). This audit records the f
 | `tradition-chronicle` | [`write-session-chronicle`](../work-management/write-session-chronicle) | Work management | Chronicle document | Rewritten as a portable wrap-up workflow with optional project conventions. |
 | `vaults-hunt` | [`hunt-research-sources`](../research-notes/hunt-research-sources) | Research & notes | Ranked findings report | Rewritten with generic output paths and no Vaults-only folders. |
 | `vaults-extract` | [`extract-source-to-notes`](../research-notes/extract-source-to-notes) | Research & notes | Structured source note | Rewritten to include capture/distill/collision steps instead of delegating to local helper skills. |
-| `vaults-autonomous` | [`run-autonomous-dev-loop`](../work-management/run-autonomous-dev-loop) | Work management | Code changes plus iteration log, or escalation record | Rewritten with portable guardrails and file-based iteration log. |
+| `vaults-autonomous` | [`forge-autonomous-work`](../process-engines/forge-autonomous-work) | Process engines | Code changes plus iteration log, or escalation record | Merged into Forge during the cognition-consolidation pass as acceptance mode. |
 | `vaults-vision-handoff` | [`write-project-vision-handoff`](../planning-handoff/write-project-vision-handoff) | Planning & handoff | `VISION.md`, `FLOWCHARTS.md`, optional supplementary docs | Bundled `reference/templates-and-examples.md`. |
 | `vaults-vision-critique` | [`critique-vision-handoff`](../planning-handoff/critique-vision-handoff) | Planning & handoff | Severity-rated critique with concrete fixes | Bundled `reference/techniques-and-output.md`. |
 
@@ -45,7 +45,7 @@ Code skills are one category, not the whole repo. Each is **standalone**: it wor
 | Skill | Category | Call |
 |---|---|---|
 | [`humanize-ai-prose`](../creative-taste/humanize-ai-prose) | Creative & taste systems | Keep. Ordered editing workflow with companion checklist. |
-| `train-a-taste-model` | n/a | **Deleted** in the non-coder pass. Too niche/ML-specific for a general audience. |
+| [`train-a-taste-model`](../creative-taste/train-a-taste-model) | Creative & taste systems | Kept. Niche, but it exists on disk and remains cataloged. |
 
 ## Still Draft
 
@@ -72,12 +72,12 @@ Built this pass:
 | `reality-audit` | Verify & review | the "verified live" lesson: the most-repeated pattern across the source body of work |
 | `test-the-measuring-stick` | Verify & review | cheap-floor / dummy-answer precedents (a content-free answer beat every model on a real eval) |
 | `audit-the-premise` | Verify & review | the investigation-first principle (false-premise tasks caught by reading reality first) |
-| `fresh-eyes-adversary-pass` | Verify & review | fresh-context adversary passes that caught blockers after "complete" was reported |
+| `fresh-eyes-adversary-pass` | Verify & review | Merged into `reality-audit` during the cognition-consolidation pass; same audit engine, different entry mode. |
 | `brainstorm-with-entropy` | Process engines | an entropy-injection brainstorming workflow (8 named techniques) |
 | `synthesize-learnings` | Work management | a cross-session retrospective + the recurrence-based promotion gate |
 | `manage-a-knowledge-base` | Research & notes | a personal-knowledge-base family (triage / collide / weave / curate / decay / integrity) as one 6-phase kit |
 
-Rules folded into skills (not shipped as standalone skills or a separate pack): verify-live → `reality-audit`; reliability≠value and cheap-floor → `test-the-measuring-stick`; investigate-before-mutating / restore-in-place → `audit-the-premise`; root-cause-the-class → `fresh-eyes-adversary-pass`; recurrence-not-excitement → `synthesize-learnings` + the kit.
+Rules folded into skills (not shipped as standalone skills or a separate pack): verify-live and root-cause-the-class → `reality-audit`; reliability≠value and cheap-floor → `test-the-measuring-stick`; investigate-before-mutating / restore-in-place → `audit-the-premise`; recurrence-not-excitement → `synthesize-learnings` + the kit.
 
 ## Next Packaging Work
 

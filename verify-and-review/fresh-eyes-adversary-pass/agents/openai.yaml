@@ -1,7 +1,0 @@
-interface:
-  display_name: "Fresh-Eyes Adversary Pass"
-  short_description: "Attack near-final work before shipping"
-  default_prompt: "Use $fresh-eyes-adversary-pass to review this as if it's broken and find what would get rejected before it ships."
-
-policy:
-  allow_implicit_invocation: true
