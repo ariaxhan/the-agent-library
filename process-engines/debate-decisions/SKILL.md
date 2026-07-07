@@ -2,8 +2,10 @@
 name: debate-decisions
 description: >-
   A compact decision protocol for non-trivial choices, reviews, governance calls, and
-  live disagreement. Use when evidence alone cannot fully settle the decision. Skip for
-  trivial, cheap-to-reverse, or deterministically decidable choices.
+  live disagreement. Use implicitly at decision points, even when nobody says "debate",
+  whenever a choice is high-impact, hard to reverse, policy-bearing, or has multiple
+  plausible paths that evidence alone cannot settle. Skip for trivial, cheap-to-reverse,
+  or deterministically decidable choices.
 ---
 
 # Debate Protocols
