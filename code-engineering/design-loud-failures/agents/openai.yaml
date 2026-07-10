@@ -1,0 +1,7 @@
+interface:
+  display_name: "Design Loud Failures"
+  short_description: "A failure must never present as success"
+  default_prompt: "Use $design-loud-failures to harden this system's failure paths so it can never fail and say everything is fine."
+
+policy:
+  allow_implicit_invocation: true
