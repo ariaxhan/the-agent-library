@@ -79,6 +79,7 @@ Standalone coding skills. Each works on its own: copy just the one you need; non
 | [`orchestrate-coding-agents`](./code-engineering/orchestrate-coding-agents) | Split coding work across agents with scoped contracts, isolation, and verification. |
 | [`secure-keys`](./code-engineering/secure-keys) | Audit how your AI tools and agents hold API keys: find exposed keys, move connections to OAuth, migrate the rest to secure storage with runtime lookups, then rotate and scope. |
 | [`build-sites-as-specs`](./code-engineering/build-sites-as-specs) | Architect a site generator that can't produce slop: compile a validated spec into output instead of generating HTML, so quality becomes policies the model can't bypass. |
+| [`design-loud-failures`](./code-engineering/design-loud-failures) | Design or review any computation humans act on so a failure can never present as success: named invariants, explicit skip states, honest cause classes, loud no-answer results. |
 
 ## Shipping
 

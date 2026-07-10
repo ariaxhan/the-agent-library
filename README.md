@@ -32,11 +32,11 @@ A skill earns its place only if it is a real workflow (multi-step, non-obvious k
 | [`research-notes/`](./research-notes) | 3 | Source hunts, single-source extraction, a full knowledge-base kit |
 | [`creative-taste/`](./creative-taste) | 2 | Writing, voice, and personal taste models |
 | [`skill-craft/`](./skill-craft) | 1 | Creating, auditing, and packaging skills |
-| [`code-engineering/`](./code-engineering) | 8 | Standalone coding workflows (one category, not the point) |
+| [`code-engineering/`](./code-engineering) | 9 | Standalone coding workflows (one category, not the point) |
 | [`shipping/`](./shipping) | 3 | Release and launch workflows |
 | [`operating-patterns/`](./operating-patterns) | 4 | Meta and methodology-shaped skills |
 
-39 skills total. [`docs/`](./docs) holds audits and maintenance notes, not installable skills.
+40 skills total. [`docs/`](./docs) holds audits and maintenance notes, not installable skills.
 
 ## The full shelf
 
