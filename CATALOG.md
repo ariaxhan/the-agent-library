@@ -24,6 +24,7 @@ Standalone, general-purpose loops for making Claude work better.
 | [`brainstorm-with-entropy`](./process-engines/brainstorm-with-entropy) | Generate genuinely novel ideas, ranked by surprise instead of safety. |
 | [`experiment-on-rules`](./process-engines/experiment-on-rules) | Treat rules, prompts, habits, or workflows as hypotheses and test them with evidence. |
 | [`debate-decisions`](./process-engines/debate-decisions) | Use structured debate formats for non-trivial decisions, reviews, governance, and live disagreement. |
+| [`extract-invariants`](./process-engines/extract-invariants) | A borrowed metaphor or cross-domain analogy wants to become architecture: extract the testable mechanism or prove it is decoration. |
 | [`delegate-to-worker-models`](./process-engines/delegate-to-worker-models) | Split work across agent lanes or hand implementation to a cheap model, with the lane contract and honest track record. |
 
 ## Planning & Handoff
